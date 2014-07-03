@@ -12,8 +12,9 @@ process.MessageLogger.cerr.threshold = 'WARNING'
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
 
-filename = open('pat_files.list', 'r')
-fileList = cms.untracked.vstring( filename.readlines() )
+### define here a list of PAT files containing muons
+#filename = open('pat_files.list', 'r')
+#fileList = cms.untracked.vstring( filename.readlines() )
 
 #process.source = cms.Source ("PoolSource", fileNames=fileList)
 process.source = cms.Source("EmptyIOVSource",

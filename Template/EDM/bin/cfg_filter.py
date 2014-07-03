@@ -28,7 +28,14 @@ process.tmpFilter = cms.EDFilter('TMPFilter',
 #    eventList = cms.string('evtlist'),
 #    listType = cms.string('skip'),
 
-#    verbose = cms.untracked.string('t')
+#    verbose = cms.untracked.string('t'),
+
+    labelMuons        = cms.string('calibratedPatMuonsPFlow'),
+    labelJets         = cms.string('selectedPatJetsLooseIDUserDataPFlow'),
+
+    ## select events with at least a muon with pT > 10 GeV
+    ## (default ptCut=70GeV)
+    ptCut = cms.double( 10.0 )
 
 )
 
