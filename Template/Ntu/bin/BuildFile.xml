@@ -1,0 +1,9 @@
+<use   name="root"/>
+<use   name="boost"/>
+<use   name="rootcintex"/>
+<use   name="NtuTool/Common"/>
+<use   name="NtuTool/Read"/>
+<use   name="TMPAnalysis/Ntu"/>
+<environment>
+  <bin   file="treeAnalyze.cc" name="tmpTreeAnalyze"></bin>
+</environment>
