@@ -2,7 +2,7 @@
 #define TMPEDMToNtuple_h
 
 #include "NtuAnalysis/Write/interface/NtuEDMAnalyzer.h"
-#include "TMPAnalysis/Ntu/interface/TMPAnalyzer.h"
+#include "TMPAnalysis/Ntu/bin/TMPAnalyzer.h"
 
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"

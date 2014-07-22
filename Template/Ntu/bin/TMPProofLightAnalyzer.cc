@@ -8,8 +8,8 @@
 #include "TMPAnalysis/Ntu/src/TMPNtupleData.cc"
 #include "NtuAnalysis/Common/src/NtuEventSelect.cc"
 #include "NtuAnalysis/Common/src/NtuAnalyzerUtil.cc"
-#include "TMPAnalysis/Ntu/src/TMPAnalyzerUtil.cc"
-#include "TMPAnalysis/Ntu/src/TMPAnalyzer.cc"
+#include "TMPAnalyzerUtil.cc"
+#include "TMPAnalyzer.cc"
 
 #include "TFile.h"
 #include "TChain.h"

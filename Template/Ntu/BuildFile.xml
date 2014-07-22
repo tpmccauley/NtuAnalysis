@@ -10,8 +10,6 @@
 <use   name="NtuTool/Read"/>
 <use   name="NtuAnalysis/Common"/>
 <flags CXXFLAGS="-Wno-delete-non-virtual-dtor"/>
-<flags SKIP_FILES="TMPAnalyzer.cc"/>
-<flags SKIP_FILES="TMPAnalyzerUtil.cc"/>
 <export>
   <lib   name="1"/>
 </export>

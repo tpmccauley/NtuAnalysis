@@ -68,6 +68,7 @@ mv ${SUBSYSTEM}/Ntu/bin/${PREFIX}$1 ${SUBSYSTEM}/Ntu/bin/${PRETMP}$1
 sed s#TMPNTUANADIR#${SUBSYSTEM}/Ntu/bin# \
     ${SUBSYSTEM}/Ntu/bin/${PRETMP}$1 >\
     ${SUBSYSTEM}/Ntu/bin/${PREFIX}$1
+rm -f ${SUBSYSTEM}/Ntu/bin/${PRETMP}$1
 }
 
 create_tlow() {
@@ -75,6 +76,7 @@ mv ${SUBSYSTEM}/Ntu/bin/${LOWFIX}$1 ${SUBSYSTEM}/Ntu/bin/${LOWTMP}$1
 sed s#TMPNTUANADIR#${SUBSYSTEM}/Ntu/bin# \
     ${SUBSYSTEM}/Ntu/bin/${LOWTMP}$1 >\
     ${SUBSYSTEM}/Ntu/bin/${LOWFIX}$1
+rm -f ${SUBSYSTEM}/Ntu/bin/${LOWTMP}$1
 }
 
 mkdir ${SUBSYSTEM}
@@ -85,17 +87,17 @@ mkdir ${SUBSYSTEM}/Ntu/interface
 create_name Ntu/interface NtupleData.h
 create_name Ntu/interface NtupleBranch.h
 create_name Ntu/interface NtupleBranch.hpp
-create_name Ntu/interface Analyzer.h
-create_name Ntu/interface AnalyzerUtil.h
 
 mkdir ${SUBSYSTEM}/Ntu/src
 create_name Ntu/src NtupleData.cc
-create_name Ntu/src Analyzer.cc
-create_name Ntu/src AnalyzerUtil.cc
 create_name Ntu/src AnalyzerFW.cc
 
 mkdir ${SUBSYSTEM}/Ntu/bin
 create_same Ntu/bin/BuildFile.xml
+create_name Ntu/bin Analyzer.h
+create_name Ntu/bin AnalyzerUtil.h
+create_name Ntu/bin Analyzer.cc
+create_name Ntu/bin AnalyzerUtil.cc
 create_name Ntu/bin AnalyzerInstance.cc
 create_name Ntu/bin ProofSetup.cc
 create_name Ntu/bin ProofAnalyzer.h

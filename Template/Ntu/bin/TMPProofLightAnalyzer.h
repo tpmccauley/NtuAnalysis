@@ -10,7 +10,7 @@
 #include <string>
 #include <vector>
 
-#include "TMPAnalysis/Ntu/interface/TMPAnalyzer.h"
+#include "TMPAnalyzer.h"
 
 #include "TMPProofSetup.cc"
 
