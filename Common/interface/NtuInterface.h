@@ -31,7 +31,7 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
 
  public:
 
-  NtuInterface() { currentTPtr = &(T::currentTree); }
+  NtuInterface() {}
   virtual ~NtuInterface() {}
 
  protected:
@@ -47,6 +47,27 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
     bool acceptEv = this->analyze( entry, event_file, T::analyzedEvts++ );
     if ( acceptEv ) T::acceptedEvts++;
     return acceptEv;
+  }
+
+  virtual bool getEntry( int ientry ) {
+    if ( currentEvBase != 0 ) return false;
+    if ( currentEvent  != 0 ) return false;
+    getHeader( ientry );
+    if ( skipList != find( runNumber, eventNumber ) )
+         return preSelect( ientry );
+    else return false;
+  }
+
+  virtual void getEntry( TBranch* branch, int ientry ) {
+    if ( currentEvBase != 0 ) return;
+    if ( currentEvent  != 0 ) return;
+    branch->GetEntry( ientry );
+    T::process( branch, ientry );
+  }
+
+  virtual bool preSelect( int ientry ) {
+    T::currentTree->GetEntry( ientry );
+    return true;
   }
 
  private:

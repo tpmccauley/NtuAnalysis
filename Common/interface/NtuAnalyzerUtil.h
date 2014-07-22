@@ -33,9 +33,6 @@ class NtuAnalyzerUtil: public NtuEventSelect,
 
   virtual void beginJob();
 
-  virtual bool getEntry( int ientry );
-  virtual void getEvent( int ientry );
-  virtual void getEntry( TBranch* branch, int ientry );
   virtual void getHeader( int ientry );
 
  protected:

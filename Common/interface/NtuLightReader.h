@@ -81,7 +81,6 @@ class NtuLightReader {
 
   const
   std::string& getUserParameter( const std::string& key ) {
-//    static std::string dum = "";
     std::map<std::string,std::string>::iterator
                                        iter = userParameters.find( key );
     std::map<std::string,std::string>::iterator
@@ -231,6 +230,9 @@ class NtuLightReader {
     dummyLevel = splitLevel;
     return;
   }
+
+  bool edmNtuple;
+  virtual void process( TBranch* b, int ientry ) {}
 
  private:
 

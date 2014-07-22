@@ -9,8 +9,8 @@ TMPAnalyzerUtil::TMPAnalyzerUtil() {
 
   // user parameters are set as names associated to a string, 
   // default values can be set in the analyzer class contructor
-  setUserParameter( "use_muons" , "true" );
-  setUserParameter( "use_jets"  , "true" );
+  setUserParameter( "use_muons" , "false" );
+  setUserParameter( "use_jets"  , "false" );
 
 }
 
@@ -44,15 +44,15 @@ void TMPAnalyzerUtil::beginJob() {
 }
 
 
-bool TMPAnalyzerUtil::getEntry( int ientry ) {
-  if( !NtuAnalyzerUtil::getEntry( ientry ) ) return false;
+// pre-selection, with minimal data process 
+// before full ntuple entry reading
+bool TMPAnalyzerUtil::preSelect( int ientry ) {
+  // get number of muons
+  getEntry( b_nMuons, ientry );
+  process( b_nMuons, ientry );
+  std::cout << nMuons  << " muons" << std::endl;
+  // skip events with no muons
+  if ( !nMuons ) return false;
+  currentTree->GetEntry( ientry );
   return true;
 }
-
-/*
-void TMPAnalyzerUtil::getEvent( int ientry ) {
-  currentTree->GetEntry( ientry );
-  return;
-}
-*/
-

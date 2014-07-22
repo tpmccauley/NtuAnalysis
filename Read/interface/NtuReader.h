@@ -10,13 +10,13 @@ class NtuReader: public T, public TreeReader {
 
   NtuReader() {}
 
-  void beginJob() {
+  virtual void beginJob() {
     T::setupNtuple();
     T::beginJob();
     return;
   }
 
-  bool getEntry( int ientry ) {
+  virtual bool getEntry( int ientry ) {
     return T::getEntry( ientry );
   }
 

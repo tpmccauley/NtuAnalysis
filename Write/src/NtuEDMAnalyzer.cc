@@ -45,11 +45,10 @@ bool NtuEDMAnalyzer::analyzeEDM( const edm::EventBase& ev,
   lumiSection = ev.id().luminosityBlock();
   eventNumber = ev.id().event();
 
-  // @@ temporary eventselect
+  // event select
   if ( skipList == find( runNumber, eventNumber ) ) return false;
   currentEvBase = &ev;
   read( ev );
-//  bool select = analyzeEDM( ientry, event_file );
   bool select = analyze( ientry, event_file, analyzedEvts++ );
   if ( select ) acceptedEvts++;
 

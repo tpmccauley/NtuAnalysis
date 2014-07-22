@@ -16,12 +16,11 @@ class TMPAnalyzerUtil: public NtuInterface< TMPNtupleBranch<WrapperBase> > {
   void setupNtuple();
   virtual void beginJob();
 
-  virtual bool getEntry( int ientry );
-//  virtual void getEvent( int ientry );
-
+  // pre-selection, with minimal data process 
+  // before full ntuple entry reading
+  virtual bool preSelect( int ientry );
 
  private:
-
 
   // dummy copy constructor and assignment
   TMPAnalyzerUtil           ( const TMPAnalyzerUtil& );

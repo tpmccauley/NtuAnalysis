@@ -18,9 +18,10 @@ class TMPAnalyzer: public virtual TMPAnalyzerUtil {
   void book();
 
   // functions called for each event
-  virtual void reset() { autoReset(); }
-//  virtual bool getEvent( int ientry );
-//  virtual bool analyze( int entry, int event_file );
+  // function to reset class content before reading from file
+  virtual void reset();
+  // function to do event-by-event analysis,
+  // return value "true" for accepted events
   virtual bool analyze( int entry, int event_file, int event_tot );
 
   // function called at the end of the analysis
@@ -33,12 +34,6 @@ class TMPAnalyzer: public virtual TMPAnalyzerUtil {
   bool verbose;
 
  protected:
-
-/*
-  virtual bool getEntry( int ientry ) {
-    return TMPAnalyzerUtil::getEntry( ientry );
-  }
-*/
 
   float ptCut;
 

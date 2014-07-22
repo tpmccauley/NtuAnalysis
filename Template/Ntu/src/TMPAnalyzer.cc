@@ -66,11 +66,11 @@ void TMPAnalyzer::book() {
 }
 
 
-//bool TMPAnalyzer::analyze( int entry, int event_file ) {
-//  bool acceptEv = analyze( entry, event_file, analyzedEvts++ );
-//  if ( acceptEv ) acceptedEvts++;
-//  return acceptEv;
-//}
+void TMPAnalyzer::reset() {
+// automatic reset
+  autoReset();
+  return;
+}
 
 
 bool TMPAnalyzer::analyze( int entry, int event_file, int event_tot ) {
