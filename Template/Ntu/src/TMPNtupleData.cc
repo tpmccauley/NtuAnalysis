@@ -8,7 +8,7 @@ TMPNtupleData::TMPNtupleData() {
   nMuons = 0;
   muoPt = new std::vector<number>;
 
-  // muons
+  // jets
   nJets = 0;
   jetPt = new std::vector<number>;
 
