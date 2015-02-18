@@ -548,27 +548,27 @@ void NtuUtil<T>::convSpheCart( const std::vector<T>* t,
 
 template<class T>
 void NtuUtil<T>::associateObjects( const std::vector<T>* lObjPt,
-                                         const std::vector<T>* lObjEta,
-                                         const std::vector<T>* lObjPhi,
-                                         const std::vector<T>* lObjPx,
-                                         const std::vector<T>* lObjPy,
-                                         const std::vector<T>* lObjPz,
-                                         const std::vector<T>* lObjE,
-                                         const std::vector<int   >* lObjCharge,
-                                         const std::vector<T>* rObjPt,
-                                         const std::vector<T>* rObjEta,
-                                         const std::vector<T>* rObjPhi,
-                                         const std::vector<T>* rObjPx,
-                                         const std::vector<T>* rObjPy,
-                                         const std::vector<T>* rObjPz,
-                                         const std::vector<T>* rObjE,
-                                         const std::vector<int   >* rObjCharge,
-                                         ObjectDistance* objDist,
-                                         ObjectSelection* lObjSel,
-                                         ObjectSelection* rObjSel,
-                                         bool singleAssociation,
-                                         std::vector<ObjectAssociation>*
-                                                     assoc ) {
+                                   const std::vector<T>* lObjEta,
+                                   const std::vector<T>* lObjPhi,
+                                   const std::vector<T>* lObjPx,
+                                   const std::vector<T>* lObjPy,
+                                   const std::vector<T>* lObjPz,
+                                   const std::vector<T>* lObjE,
+                                   const std::vector<int   >* lObjCharge,
+                                   const std::vector<T>* rObjPt,
+                                   const std::vector<T>* rObjEta,
+                                   const std::vector<T>* rObjPhi,
+                                   const std::vector<T>* rObjPx,
+                                   const std::vector<T>* rObjPy,
+                                   const std::vector<T>* rObjPz,
+                                   const std::vector<T>* rObjE,
+                                   const std::vector<int   >* rObjCharge,
+                                   ObjectDistance* objDist,
+                                   ObjectSelection* lObjSel,
+                                   ObjectSelection* rObjSel,
+                                   bool singleAssociation,
+                                   std::vector<ObjectAssociation>*
+                                               assoc ) {
   int nl = lObjPt->size();
   int nr = rObjPt->size();
   int il;

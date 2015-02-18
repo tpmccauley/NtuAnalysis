@@ -23,22 +23,18 @@ TMPEDMToNtuple::TMPEDMToNtuple( const edm::ParameterSet& ps ):
 
   // get label of muons collection and
   // switch on muon blocklet if not null
-  labelMuons = ( ps.exists              ( "labelMuons" ) ?
-                 ps.getParameter<string>( "labelMuons" ) : "" );
-  setUserParameter( "labelMuons", labelMuons );
-  use_muons = labelMuons != "";
-  setUserParameter(  "use_muons", use_muons ? "t" : "f" );
+//  getParameter( "labelMuons", labelMuons, "" );
+  GET_PARAMETER( labelMuons, "" );
+  use_muons = ( labelMuons != "" );
+  setUserParameter( "use_muons", use_muons ? "t" : "f" );
 
   // get label of jets collection and
   // switch on muon blocklet if not null
-  labelJets = ( ps.exists              ( "labelJets" ) ?
-                ps.getParameter<string>( "labelJets" ) : "" );
-  setUserParameter( "labelJets", labelJets );
+  GET_PARAMETER( labelJets , "" );
   use_jets = labelJets != "";
-  setUserParameter(  "use_jets", use_jets ? "t" : "f" );
+  setUserParameter( "use_jets", use_jets ? "t" : "f" );
 
-  if ( ps.exists( "ptCut" ) ) setUserParameter( "ptCut",
-                       ps.getParameter<double>( "ptCut" ) );
+  GET_PARAMETER( ptCut, "10.0" );
 
   setupNtuple();
 

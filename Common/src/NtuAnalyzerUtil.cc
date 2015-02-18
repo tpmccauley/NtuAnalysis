@@ -10,6 +10,7 @@
 #include "TTree.h"
 
 NtuAnalyzerUtil::NtuAnalyzerUtil() {
+  currentRun     = 0;
   currentEvent   = 0;
   currentEvBase  = 0;
   currentEvSetup = 0;

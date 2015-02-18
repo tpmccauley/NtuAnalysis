@@ -25,6 +25,9 @@ typedef NtuLightReader WrapperBase;
 #error use -D UTIL_USE=FULL or -D UTIL_USE=BARE
 #endif
 
+#include <iostream>
+#include <string>
+
 template<class T>
 class NtuInterface: public virtual NtuAnalyzerUtil,
                     public virtual T {
@@ -69,6 +72,17 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
     T::currentTree->GetEntry( ientry );
     return true;
   }
+
+  void dumpEvent( std::ostream& os,
+                  const std::string& label = std::string( "" ),
+                  bool endLine = true ) {
+    os << "run: " << runNumber << " , event: " << eventNumber;
+    if ( label.size() ) os << " " << label;
+    if ( endLine ) os << std::endl;
+    return;
+  }
+
+ protected:
 
  private:
 

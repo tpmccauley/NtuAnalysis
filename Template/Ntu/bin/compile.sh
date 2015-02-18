@@ -13,12 +13,10 @@ rm -f ${TMP_EXE_FILE}
 c++ -Wall `root-config --cflags`              \
 -I ${TMP_ROOT_DIR} -I ${NTU_TOOL_DIR}/include \
 -o ${TMP_EXE_FILE}                            \
-`ls -1 $TMP_PACK_DIR/src/*cc      |\
-       grep -v TMPAnalyzer.cc     |\
-       grep -v TMPAnalyzerUtil.cc |\
+`ls -1 $TMP_PACK_DIR/src/*cc |\
        awk '{printf($0" ")}'`                 \
-${TMP_PACK_DIR}/bin/TMPAnalyzerInstance.cc    \
-${XYZ_ROOT_DIR}/NtuAnalysis/*/src/*cc         \
+${TMP_PACK_DIR}/bin/treeAnalyze.cc            \
+${TMP_ROOT_DIR}/NtuAnalysis/*/src/*cc         \
 -L${NTU_TOOL_DIR}/lib -lNtupleTool            \
 `root-config --glibs`
 
