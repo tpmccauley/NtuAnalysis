@@ -16,11 +16,7 @@
 #include <vector>
 class TFile;
 
-namespace edm {
-  class TriggerResults;
-  class TriggerNames;
-  class LumiReWeighting;
-}
+#define GET_PARAMETER( X, D ) getParameter( #X, X, D )
 
 class NtuEDMAnalyzer: public virtual NtuEventHeader,
                       public virtual NtuAnalyzerUtil,
@@ -30,6 +26,18 @@ class NtuEDMAnalyzer: public virtual NtuEventHeader,
 
   NtuEDMAnalyzer( const edm::ParameterSet& ps );
   virtual ~NtuEDMAnalyzer();
+
+  template<class T>
+  void getParameter( const std::string& key, T& val,
+                     const std::string& def ) {
+    setUserParameter( key, def );
+    T tmp;
+    getUserParameter( key, tmp );
+    val = ( parameterSet->exists         ( key ) ?
+            parameterSet->getParameter<T>( key ) : tmp );
+    setUserParameter( key, val );
+    return;
+  }
 
   virtual void beginJob();
   virtual void beginRun();

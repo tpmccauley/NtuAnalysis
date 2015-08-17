@@ -38,7 +38,7 @@ T NtuUtil<T>::invMass( T px, T py, T pz, T ee ) {
 
 template<class T>
 T NtuUtil<T>::invMass( T px1, T py1, T pz1, T ee1,
-                             T px2, T py2, T pz2, T ee2 ) {
+                       T px2, T py2, T pz2, T ee2 ) {
   T pxt = px1 + px2;
   T pyt = py1 + py2;
   T pzt = pz1 + pz2;
@@ -50,8 +50,8 @@ T NtuUtil<T>::invMass( T px1, T py1, T pz1, T ee1,
 
 template<class T>
 T NtuUtil<T>::invMass( T px1, T py1, T pz1, T ee1,
-                             T px2, T py2, T pz2, T ee2,
-                             T px3, T py3, T pz3, T ee3 ) {
+                       T px2, T py2, T pz2, T ee2,
+                       T px3, T py3, T pz3, T ee3 ) {
   T pxt = px1 + px2 + px3;
   T pyt = py1 + py2 + py3;
   T pzt = pz1 + pz2 + pz3;
@@ -63,9 +63,9 @@ T NtuUtil<T>::invMass( T px1, T py1, T pz1, T ee1,
 
 template<class T>
 T NtuUtil<T>::invMass( T px1, T py1,T pz1, T ee1,
-                             T px2, T py2, T pz2, T ee2,
-                             T px3, T py3, T pz3, T ee3,
-                             T px4, T py4, T pz4, T ee4 ) {
+                       T px2, T py2, T pz2, T ee2,
+                       T px3, T py3, T pz3, T ee3,
+                       T px4, T py4, T pz4, T ee4 ) {
   T pxt = px1 + px2 + px3 + px4;
   T pyt = py1 + py2 + py3 + py4;
   T pzt = pz1 + pz2 + pz3 + pz4;
@@ -89,7 +89,7 @@ T NtuUtil<T>::invMSph( T  pt, T eta, T phi, T  ee ) {
 
 template<class T>
 T NtuUtil<T>::invMSph( T  pt1, T eta1, T phi1, T  ee1,
-                             T  pt2, T eta2, T phi2, T  ee2 ) {
+                       T  pt2, T eta2, T phi2, T  ee2 ) {
   T px1;
   T py1;
   T pz1;
@@ -105,8 +105,8 @@ T NtuUtil<T>::invMSph( T  pt1, T eta1, T phi1, T  ee1,
 
 template<class T>
 T NtuUtil<T>::invMSph( T  pt1, T eta1, T phi1, T  ee1,
-                             T  pt2, T eta2, T phi2, T  ee2,
-                             T  pt3, T eta3, T phi3, T  ee3 ) {
+                       T  pt2, T eta2, T phi2, T  ee2,
+                       T  pt3, T eta3, T phi3, T  ee3 ) {
   T px1;
   T py1;
   T pz1;
@@ -127,9 +127,9 @@ T NtuUtil<T>::invMSph( T  pt1, T eta1, T phi1, T  ee1,
 
 template<class T>
 T NtuUtil<T>::invMSph( T  pt1, T eta1, T phi1, T  ee1,
-                             T  pt2, T eta2, T phi2, T  ee2,
-                             T  pt3, T eta3, T phi3, T  ee3,
-                             T  pt4, T eta4, T phi4, T  ee4 ) {
+                       T  pt2, T eta2, T phi2, T  ee2,
+                       T  pt3, T eta3, T phi3, T  ee3,
+                       T  pt4, T eta4, T phi4, T  ee4 ) {
   T px1;
   T py1;
   T pz1;
@@ -155,7 +155,7 @@ T NtuUtil<T>::invMSph( T  pt1, T eta1, T phi1, T  ee1,
 
 template<class T>
 T NtuUtil<T>::invMass_M( T px1, T py1, T pz1, T mm1,
-                               T px2, T py2, T pz2, T mm2 ) {
+                         T px2, T py2, T pz2, T mm2 ) {
   T pxt = px1 + px2;
   T pyt = py1 + py2;
   T pzt = pz1 + pz2;
@@ -168,8 +168,8 @@ T NtuUtil<T>::invMass_M( T px1, T py1, T pz1, T mm1,
 
 template<class T>
 T NtuUtil<T>::invMass_M( T px1, T py1, T pz1, T mm1,
-                               T px2, T py2, T pz2, T mm2,
-                               T px3, T py3, T pz3, T mm3 ) {
+                         T px2, T py2, T pz2, T mm2,
+                         T px3, T py3, T pz3, T mm3 ) {
   T pxt = px1 + px2 + px3;
   T pyt = py1 + py2 + py3;
   T pzt = pz1 + pz2 + pz3;
@@ -183,9 +183,9 @@ T NtuUtil<T>::invMass_M( T px1, T py1, T pz1, T mm1,
 
 template<class T>
 T NtuUtil<T>::invMass_M( T px1, T py1, T pz1, T mm1,
-                               T px2, T py2, T pz2, T mm2,
-                               T px3, T py3, T pz3, T mm3,
-                               T px4, T py4, T pz4, T mm4 ) {
+                         T px2, T py2, T pz2, T mm2,
+                         T px3, T py3, T pz3, T mm3,
+                         T px4, T py4, T pz4, T mm4 ) {
   T pxt = px1 + px2 + px3 + px4;
   T pyt = py1 + py2 + py3 + py4;
   T pzt = pz1 + pz2 + pz3 + pz4;
@@ -200,7 +200,7 @@ T NtuUtil<T>::invMass_M( T px1, T py1, T pz1, T mm1,
 
 template<class T>
 T NtuUtil<T>::invMSph_M( T  pt1, T eta1, T phi1, T  mm1,
-                               T  pt2, T eta2, T phi2, T  mm2 ) {
+                         T  pt2, T eta2, T phi2, T  mm2 ) {
   T px1;
   T py1;
   T pz1;
@@ -216,8 +216,8 @@ T NtuUtil<T>::invMSph_M( T  pt1, T eta1, T phi1, T  mm1,
 
 template<class T>
 T NtuUtil<T>::invMSph_M( T  pt1, T eta1, T phi1, T  mm1,
-                               T  pt2, T eta2, T phi2, T  mm2,
-                               T  pt3, T eta3, T phi3, T  mm3 ) {
+                         T  pt2, T eta2, T phi2, T  mm2,
+                         T  pt3, T eta3, T phi3, T  mm3 ) {
   T px1;
   T py1;
   T pz1;
@@ -238,9 +238,9 @@ T NtuUtil<T>::invMSph_M( T  pt1, T eta1, T phi1, T  mm1,
 
 template<class T>
 T NtuUtil<T>::invMSph_M( T  pt1, T eta1, T phi1, T  mm1,
-                               T  pt2, T eta2, T phi2, T  mm2,
-                               T  pt3, T eta3, T phi3, T  mm3,
-                               T  pt4, T eta4, T phi4, T  mm4 ) {
+                         T  pt2, T eta2, T phi2, T  mm2,
+                         T  pt3, T eta3, T phi3, T  mm3,
+                         T  pt4, T eta4, T phi4, T  mm4 ) {
   T px1;
   T py1;
   T pz1;
@@ -274,7 +274,7 @@ T NtuUtil<T>::dSqua( T a1, T b1, T a2, T b2 ) {
 
 template<class T>
 T NtuUtil<T>::dSqua( T a1, T b1, T c1,
-                           T a2, T b2, T c2 ) {
+                     T a2, T b2, T c2 ) {
   T aD = a1 - a2;
   T bD = b1 - b2;
   T cD = c1 - c2;
@@ -284,7 +284,7 @@ T NtuUtil<T>::dSqua( T a1, T b1, T c1,
 
 template<class T>
 T NtuUtil<T>::delta( T a1, T b1,
-                           T a2, T b2 ) {
+                     T a2, T b2 ) {
   T aD = a1 - a2;
   T bD = b1 - b2;
   return sqrt( ( aD * aD ) + ( bD * bD ) );
@@ -293,7 +293,7 @@ T NtuUtil<T>::delta( T a1, T b1,
 
 template<class T>
 T NtuUtil<T>::delta( T a1, T b1, T c1,
-                           T a2, T b2, T c2 ) {
+                     T a2, T b2, T c2 ) {
   T aD = a1 - a2;
   T bD = b1 - b2;
   T cD = c1 - c2;
@@ -302,7 +302,7 @@ T NtuUtil<T>::delta( T a1, T b1, T c1,
 
 template<class T>
 T NtuUtil<T>::dRSqua( T eta1, T phi1,
-                            T eta2, T phi2 ) {
+                      T eta2, T phi2 ) {
   T etaD = eta1 - eta2;
   T phiD = phi1 - phi2;
   phiD = fabs( M_PI - fabs( M_PI - fabs( phiD ) ) );
@@ -311,7 +311,7 @@ T NtuUtil<T>::dRSqua( T eta1, T phi1,
 
 template<class T>
 T NtuUtil<T>::deltaR( T eta1, T phi1,
-                            T eta2, T phi2 ) {
+                      T eta2, T phi2 ) {
   T etaD = eta1 - eta2;
   T phiD = phi1 - phi2;
   phiD = fabs( M_PI - fabs( M_PI - fabs( phiD ) ) );
@@ -331,7 +331,7 @@ T NtuUtil<T>::modSqua( T t, T e ) {
 
 template<class T>
 T NtuUtil<T>::angleCart( T x1, T y1, T z1,
-                               T x2, T y2, T z2 ) {
+                         T x2, T y2, T z2 ) {
   T s = ( x1 * x2 ) + ( y1 * y2 ) + ( z1 * z2 );
   T p = modCart( x1, y1, z1 ) * modCart( x2, y2, z2 );
   if ( fabs( p ) <= fabs( s ) ) return ( s * p > 0 ? 0 : M_PI );
@@ -340,7 +340,7 @@ T NtuUtil<T>::angleCart( T x1, T y1, T z1,
 
 template<class T>
 T NtuUtil<T>::angleSphe( T t1, T e1, T p1,
-                               T t2, T e2, T p2 ) {
+                         T t2, T e2, T p2 ) {
   T x1;
   T y1;
   T z1;
@@ -354,7 +354,7 @@ T NtuUtil<T>::angleSphe( T t1, T e1, T p1,
 
 template<class T>
 T NtuUtil<T>::ptCart( T px, T py, T pz,
-                            T qx, T qy, T qz ) {
+                      T qx, T qy, T qz ) {
   T s = ( px * qx ) + ( py * qy ) + ( pz * qz );
   T p = modSqua( px, py, pz );
   T q = modSqua( qx, qy, qz );
@@ -365,7 +365,7 @@ T NtuUtil<T>::ptCart( T px, T py, T pz,
 
 template<class T>
 T NtuUtil<T>::ptSphe( T pt, T pe, T pp,
-                                  T qe, T qp ) {
+                      T qe, T qp ) {
   T px;
   T py;
   T pz;
@@ -379,13 +379,13 @@ T NtuUtil<T>::ptSphe( T pt, T pe, T pp,
 
 template<class T>
 T NtuUtil<T>::plCart( T px, T py, T pz,
-                            T qx, T qy, T qz ) {
+                      T qx, T qy, T qz ) {
   return ( ( px * qx ) + ( py * qy ) + ( pz * qz ) ) / modCart( qx, qy, qz );
 }
 
 template<class T>
 T NtuUtil<T>::plSphe( T pt, T pe, T pp,
-                                  T qe, T qp ) {
+                      T qe, T qp ) {
   T px;
   T py;
   T pz;
@@ -399,8 +399,8 @@ T NtuUtil<T>::plSphe( T pt, T pe, T pp,
 
 template<class T>
 T NtuUtil<T>::transf( T  px, T  py, T  pz, T  ep,
-                            T  qx, T  qy, T  qz, T  eq,
-                            T& tx, T& ty, T& tz, T& et ) {
+                      T  qx, T  qy, T  qz, T  eq,
+                      T& tx, T& ty, T& tz, T& et ) {
   T s = ( px * qx ) + ( py * qy ) + ( pz * qz );
   T p = modSqua( px, py, pz );
   T q = modSqua( qx, qy, qz );
@@ -424,7 +424,7 @@ T NtuUtil<T>::transf( T  px, T  py, T  pz, T  ep,
 
 template<class T>
 T NtuUtil<T>::ptCMin( T px, T py, T pz,
-                            T qx, T qy, T qz ) {
+                      T qx, T qy, T qz ) {
   T s = ( px * qx ) + ( py * qy ) + ( pz * qz );
   T p = modSqua( px, py, pz );
   T q = modSqua( qx, qy, qz );
@@ -435,7 +435,7 @@ T NtuUtil<T>::ptCMin( T px, T py, T pz,
 
 template<class T>
 T NtuUtil<T>::ptSMin( T pt, T pe, T pp,
-                            T qt, T qe, T qp ) {
+                      T qt, T qe, T qp ) {
   T px;
   T py;
   T pz;
@@ -449,7 +449,7 @@ T NtuUtil<T>::ptSMin( T pt, T pe, T pp,
 
 template<class T>
 T NtuUtil<T>::ptCMax( T px, T py, T pz,
-                            T qx, T qy, T qz ) {
+                      T qx, T qy, T qz ) {
   T s = ( px * qx ) + ( py * qy ) + ( pz * qz );
   T p = modSqua( px, py, pz );
   T q = modSqua( qx, qy, qz );
@@ -460,7 +460,7 @@ T NtuUtil<T>::ptCMax( T px, T py, T pz,
 
 template<class T>
 T NtuUtil<T>::ptSMax( T pt, T pe, T pp,
-                            T qt, T qe, T qp ) {
+                      T qt, T qe, T qp ) {
   T px;
   T py;
   T pz;
@@ -474,7 +474,7 @@ T NtuUtil<T>::ptSMax( T pt, T pe, T pp,
 
 template<class T>
 void NtuUtil<T>::convCartSphe( T  x, T  y, T  z,
-                                     T& t, T& e, T& p ) {
+                               T& t, T& e, T& p ) {
   t = sqrt( ( x * x ) + ( y * y ) );
   T
   r = sqrt( ( x * x ) + ( y * y ) + ( z * z ) );
@@ -486,7 +486,7 @@ void NtuUtil<T>::convCartSphe( T  x, T  y, T  z,
 
 template<class T>
 void NtuUtil<T>::convSpheCart( T  t, T  e, T  p,
-                                     T& x, T& y, T& z ) {
+                               T& x, T& y, T& z ) {
   x = t * cos( p );
   y = t * sin( p );
   z = t / tan( 2 * atan( exp( -e ) ) );
@@ -496,12 +496,12 @@ void NtuUtil<T>::convSpheCart( T  t, T  e, T  p,
 
 template<class T>
 void NtuUtil<T>::convCartSphe( const std::vector<T>* x,
-                                     const std::vector<T>* y,
-                                     const std::vector<T>* z,
-                                           std::vector<T>* t,
-                                           std::vector<T>* e,
-                                           std::vector<T>* p,
-                                           int i ) {
+                               const std::vector<T>* y,
+                               const std::vector<T>* z,
+                                     std::vector<T>* t,
+                                     std::vector<T>* e,
+                                     std::vector<T>* p,
+                               int i ) {
   if ( i < 0 ) {
     int j;
     int n = x->size();
@@ -522,12 +522,12 @@ void NtuUtil<T>::convCartSphe( const std::vector<T>* x,
 
 template<class T>
 void NtuUtil<T>::convSpheCart( const std::vector<T>* t,
-                                     const std::vector<T>* e,
-                                     const std::vector<T>* p,
-                                           std::vector<T>* x,
-                                           std::vector<T>* y,
-                                           std::vector<T>* z,
-                                           int i ) {
+                               const std::vector<T>* e,
+                               const std::vector<T>* p,
+                                     std::vector<T>* x,
+                                     std::vector<T>* y,
+                                     std::vector<T>* z,
+                               int i ) {
   if ( i < 0 ) {
     int j;
     int n = t->size();
@@ -548,27 +548,26 @@ void NtuUtil<T>::convSpheCart( const std::vector<T>* t,
 
 template<class T>
 void NtuUtil<T>::associateObjects( const std::vector<T>* lObjPt,
-                                         const std::vector<T>* lObjEta,
-                                         const std::vector<T>* lObjPhi,
-                                         const std::vector<T>* lObjPx,
-                                         const std::vector<T>* lObjPy,
-                                         const std::vector<T>* lObjPz,
-                                         const std::vector<T>* lObjE,
-                                         const std::vector<int   >* lObjCharge,
-                                         const std::vector<T>* rObjPt,
-                                         const std::vector<T>* rObjEta,
-                                         const std::vector<T>* rObjPhi,
-                                         const std::vector<T>* rObjPx,
-                                         const std::vector<T>* rObjPy,
-                                         const std::vector<T>* rObjPz,
-                                         const std::vector<T>* rObjE,
-                                         const std::vector<int   >* rObjCharge,
-                                         ObjectDistance* objDist,
-                                         ObjectSelection* lObjSel,
-                                         ObjectSelection* rObjSel,
-                                         bool singleAssociation,
-                                         std::vector<ObjectAssociation>*
-                                                     assoc ) {
+                                   const std::vector<T>* lObjEta,
+                                   const std::vector<T>* lObjPhi,
+                                   const std::vector<T>* lObjPx,
+                                   const std::vector<T>* lObjPy,
+                                   const std::vector<T>* lObjPz,
+                                   const std::vector<T>* lObjE,
+                                   const std::vector<int   >* lObjCharge,
+                                   const std::vector<T>* rObjPt,
+                                   const std::vector<T>* rObjEta,
+                                   const std::vector<T>* rObjPhi,
+                                   const std::vector<T>* rObjPx,
+                                   const std::vector<T>* rObjPy,
+                                   const std::vector<T>* rObjPz,
+                                   const std::vector<T>* rObjE,
+                                   const std::vector<int   >* rObjCharge,
+                                   ObjectDistance* objDist,
+                                   ObjectSelection* lObjSel,
+                                   ObjectSelection* rObjSel,
+                                   bool singleAssociation,
+                                   std::vector<ObjectAssociation>* assoc ) {
   int nl = lObjPt->size();
   int nr = rObjPt->size();
   int il;

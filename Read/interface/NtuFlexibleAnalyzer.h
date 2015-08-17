@@ -72,17 +72,17 @@ class NtuFlexibleAnalyzer: public TreeStandardAnalyzer {
     while ( argp < argl ) {
       std::string args( *argp++ );
       if ( args == "-v" ) {
-      key = *argp++;
-      val = *argp++;
-      if ( key != "ntuType" ) continue;
-      if ( val == "ntu" ) type = ntu;
-      else
-      if ( val == "edm" ) type = edm;
-      else                std::cout << "invalid ntuple type: " << val
-                                    << " choose \"ntu\" or \"edm\""
-                                    << std::endl;
-      if ( key == "process"  ) ntuProdProcess  = val;
-      if ( key == "producer" ) ntuProdProducer = val;
+        key = *argp++;
+        val = *argp++;
+        if ( key == "process"  ) ntuProdProcess  = val;
+        if ( key == "producer" ) ntuProdProducer = val;
+        if ( key == "ntuType"  ) {
+          if      ( val == "ntu" ) type = ntu;
+          else if ( val == "edm" ) type = edm;
+          else                     std::cout << "invalid ntuple type: " << val
+                                             << " choose \"ntu\" or \"edm\""
+                                             << std::endl;
+        }
       }
     }
     

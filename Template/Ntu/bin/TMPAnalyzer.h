@@ -35,7 +35,7 @@ class TMPAnalyzer: public virtual TMPAnalyzerUtil {
 
  protected:
 
-  float ptCut;
+  double ptCut;
 
  private:
 

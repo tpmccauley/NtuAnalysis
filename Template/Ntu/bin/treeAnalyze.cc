@@ -1,4 +1,5 @@
 #define UTIL_USE FULL
-#include "TMPAnalyzer.cc"
-#include "TMPAnalyzerUtil.cc"
-#include "TMPAnalyzerInstance.cc"
+#include "TMPAnalyzer.h"
+#include "NtuAnalysis/Read/interface/NtuFlexibleAnalyzer.h"
+#include "NtuTool/Read/bin/treeAnalyze.cc"
+static NtuFlexibleAnalyzer<TMPAnalyzer> nfa( "tmpAnalysis", "tmpAnalyzer" );

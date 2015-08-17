@@ -2,15 +2,13 @@
 #include "TFile.h"
 #include "TROOT.h"
 
-using namespace std;
-
 template<class T>
 NtuWriteInterface<T>::NtuWriteInterface( const edm::ParameterSet& ps ):
   T( ps ) {
 
-  cout << "NtuWriteInterface::NtuWriteInterface" << endl;
+  std::cout << "NtuWriteInterface::NtuWriteInterface" << std::endl;
 
-  ntuName = ps.getUntrackedParameter<string>( "ntuName" );
+  ntuName = ps.getUntrackedParameter<std::string>( "ntuName" );
   dumpNtuple = ( ntuName != "" );
 
 }
@@ -24,7 +22,7 @@ NtuWriteInterface<T>::~NtuWriteInterface() {
 template<class T>
 void NtuWriteInterface<T>::beginJob() {
 
-  cout << "NtuWriteInterface::beginJob()" << endl;
+  std::cout << "NtuWriteInterface::beginJob()" << std::endl;
 
   T::beginJob();
   openNtuple( ntuName );
@@ -35,7 +33,7 @@ void NtuWriteInterface<T>::beginJob() {
 
 
 template<class T>
-void NtuWriteInterface<T>::openNtuple( const string& name ) {
+void NtuWriteInterface<T>::openNtuple( const std::string& name ) {
   TDirectory* current = gDirectory;
   file = ( dumpNtuple ? new TFile( name.c_str(), "CREATE" ) : 0 );
   initWrite( file );
