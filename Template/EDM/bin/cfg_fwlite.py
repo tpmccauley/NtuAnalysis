@@ -24,7 +24,7 @@ process.tmpAnalyzer = cms.PSet(
 #    eventList = cms.string('evtlist'),
 #    listType = cms.string('skip'),
 
-#    verbose = cms.untracked.string('f'),
+    verbose = cms.untracked.bool(True),
 
     labelMuons        = cms.string('calibratedPatMuonsPFlow'),
     labelJets         = cms.string('selectedPatJetsLooseIDUserDataPFlow'),

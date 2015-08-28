@@ -24,6 +24,10 @@ process.source = cms.Source("EmptyIOVSource",
     interval   = cms.uint64(1)
 )
 
+#process.evNumFilter = cms.EDFilter('EvNumFilter',
+#    eventList = cms.string('evList')
+#)
+
 process.tmpAnalyzer = cms.EDProducer('TMPEDMNtuplizer',
 
     ## mandatory
@@ -34,7 +38,7 @@ process.tmpAnalyzer = cms.EDProducer('TMPEDMNtuplizer',
 #    eventList = cms.string('evtlist'),
 #    listType = cms.string('skip'),
 
-#    verbose = cms.untracked.string('t'),
+    verbose = cms.untracked.bool(True),
 
 #    labelMuons        = cms.string('calibratedPatMuonsPFlow'),
 #    labelJets         = cms.string('selectedPatJetsLooseIDUserDataPFlow'),
@@ -47,7 +51,8 @@ process.tmpAnalyzer = cms.EDProducer('TMPEDMNtuplizer',
 )
 
 process.tmpFilter = cms.EDFilter('EDMNtupleFilter')
-process.p = cms.Path(process.tmpAnalyzer * process.tmpFilter)
+process.p = cms.Path(#process.evNumFilter *
+                     process.tmpAnalyzer * process.tmpFilter)
 
 process.out = cms.OutputModule(
     "PoolOutputModule",

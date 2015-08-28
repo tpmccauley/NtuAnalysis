@@ -16,7 +16,8 @@
 #include <vector>
 class TFile;
 
-#define GET_PARAMETER( X, D ) getParameter( #X, X, D )
+#define GET_PARAMETER( X, D ) getParameter( #X, X, D, true )
+#define GET_UNTRACKED( X, D ) getParameter( #X, X, D, false )
 
 class NtuEDMAnalyzer: public virtual NtuEventHeader,
                       public virtual NtuAnalyzerUtil,
@@ -29,12 +30,14 @@ class NtuEDMAnalyzer: public virtual NtuEventHeader,
 
   template<class T>
   void getParameter( const std::string& key, T& val,
-                     const std::string& def ) {
+                     const std::string& def, bool tracked ) {
     setUserParameter( key, def );
     T tmp;
     getUserParameter( key, tmp );
-    val = ( parameterSet->exists         ( key ) ?
-            parameterSet->getParameter<T>( key ) : tmp );
+    val = ( parameterSet->exists( key ) ?
+            ( tracked ? 
+              parameterSet->getParameter<T>( key ) :
+              parameterSet->getUntrackedParameter<T>( key ) ) : tmp );
     setUserParameter( key, val );
     return;
   }

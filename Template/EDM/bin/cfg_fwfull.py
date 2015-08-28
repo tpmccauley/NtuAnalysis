@@ -24,6 +24,10 @@ process.source = cms.Source("EmptyIOVSource",
     interval   = cms.uint64(1)
 )
 
+#process.evNumFilter = cms.EDFilter('EvNumFilter',
+#    eventList = cms.string('evList')
+#)
+
 process.tmpAnalyzer = cms.EDAnalyzer('TMPNtuplizer',
 
     ## mandatory
@@ -36,7 +40,7 @@ process.tmpAnalyzer = cms.EDAnalyzer('TMPNtuplizer',
 #    eventList = cms.string('evtlist'),
 #    listType = cms.string('skip'),
 
-#    verbose = cms.untracked.string('t'),
+    verbose = cms.untracked.bool(True),
 
 #    labelMuons        = cms.string('calibratedPatMuonsPFlow'),
 #    labelJets         = cms.string('selectedPatJetsLooseIDUserDataPFlow'),
@@ -49,4 +53,5 @@ process.tmpAnalyzer = cms.EDAnalyzer('TMPNtuplizer',
 )
 
 
-process.p = cms.Path(process.tmpAnalyzer)
+process.p = cms.Path(#process.evNumFilter *
+                     process.tmpAnalyzer)

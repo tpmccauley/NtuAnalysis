@@ -21,6 +21,8 @@ TMPEDMToNtuple::TMPEDMToNtuple( const edm::ParameterSet& ps ):
 
   cout << "TMPEDMToNtuple::TMPEDMToNtuple" << endl;
 
+  GET_UNTRACKED( verbose, "false" );
+
   // get label of muons collection and
   // switch on muon blocklet if not null
 //  getParameter( "labelMuons", labelMuons, "" );

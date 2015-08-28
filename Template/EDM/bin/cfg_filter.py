@@ -16,6 +16,10 @@ fileList = cms.untracked.vstring( filename.readlines() )
 
 process.source = cms.Source ("PoolSource", fileNames=fileList)
 
+#process.evNumFilter = cms.EDFilter('EvNumFilter',
+#    eventList = cms.string('evList')
+#)
+
 process.tmpFilter = cms.EDFilter('TMPFilter',
 
     ## mandatory
@@ -28,7 +32,7 @@ process.tmpFilter = cms.EDFilter('TMPFilter',
 #    eventList = cms.string('evtlist'),
 #    listType = cms.string('skip'),
 
-#    verbose = cms.untracked.string('t'),
+    verbose = cms.untracked.bool(True),
 
     labelMuons        = cms.string('calibratedPatMuonsPFlow'),
     labelJets         = cms.string('selectedPatJetsLooseIDUserDataPFlow'),
@@ -40,7 +44,8 @@ process.tmpFilter = cms.EDFilter('TMPFilter',
 )
 
 
-process.p = cms.Path(process.tmpFilter)
+process.p = cms.Path(#process.evNumFilter *
+                     process.tmpFilter)
 
 process.out = cms.OutputModule("PoolOutputModule",
     outputCommands = cms.untracked.vstring('keep *_*_*_HLT',
