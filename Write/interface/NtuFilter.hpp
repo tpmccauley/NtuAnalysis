@@ -36,7 +36,7 @@ void NtuFilter<T>::endJob()  {
 
 
 template <class T>
-bool NtuFilter<T>::beginRun( const edm::Run& run,
+bool NtuFilter<T>::beginRun(       edm::Run& run,
                              const edm::EventSetup& es ) {
   currentRun     = &run;
   currentEvSetup = &es;
@@ -46,7 +46,7 @@ bool NtuFilter<T>::beginRun( const edm::Run& run,
 
 
 template <class T>
-bool NtuFilter<T>::endRun( const edm::Run& run,
+bool NtuFilter<T>::endRun(       edm::Run& run,
                            const edm::EventSetup& es ) {
   T::endRun();
   return true;

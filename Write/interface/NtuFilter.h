@@ -40,8 +40,8 @@ class NtuFilter: public edm::EDFilter,
   int analyzedFile;
   std::string histName;
 
-  virtual bool beginRun( const edm::Run& run , const edm::EventSetup& es );
-  virtual bool endRun(   const edm::Run& run , const edm::EventSetup& es );
+  virtual bool beginRun(       edm::Run& run , const edm::EventSetup& es );
+  virtual bool endRun(         edm::Run& run , const edm::EventSetup& es );
   virtual bool filter(         edm::Event& ev, const edm::EventSetup& es );
 
 };

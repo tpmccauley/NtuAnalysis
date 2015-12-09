@@ -33,18 +33,6 @@ void EvNumFilter::endJob()  {
 }
 
 
-bool EvNumFilter::beginRun( const edm::Run& run,
-                            const edm::EventSetup& es ) {
-  return true;
-}
-
-
-bool EvNumFilter::endRun( const edm::Run& run,
-                          const edm::EventSetup& es ) {
-  return true;
-}
-
-
 bool EvNumFilter::filter( edm::Event& ev,
                     const edm::EventSetup& es ) {
   unsigned int runNumber   = ev.id().run();
