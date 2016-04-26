@@ -16,8 +16,7 @@ using pat::Jet;
 
 using namespace std;
 
-TMPEDMToNtuple::TMPEDMToNtuple( const edm::ParameterSet& ps ):
- NtuEDMAnalyzer( ps ) {
+void TMPEDMToNtuple::build( const edm::ParameterSet& ps ) {
 
   cout << "TMPEDMToNtuple::TMPEDMToNtuple" << endl;
 
@@ -33,7 +32,7 @@ TMPEDMToNtuple::TMPEDMToNtuple( const edm::ParameterSet& ps ):
   // get label of jets collection and
   // switch on muon blocklet if not null
   GET_PARAMETER( labelJets , "" );
-  use_jets = labelJets != "";
+  use_jets = ( labelJets != "" );
   setUserParameter( "use_jets", use_jets ? "t" : "f" );
 
   GET_PARAMETER( ptCut, "10.0" );
@@ -99,8 +98,9 @@ void TMPEDMToNtuple::fillMuons() {
     return;
   }
 
-  currentEvBase->getByLabel( getUserParameter( "labelMuons" ),
-                             muons );
+  // get muons through an interface to access data by label or by token
+  // according to CMSSW version
+  gt_muons.get( currentEvBase, muons );
   bool vMuons = muons.isValid();
 
   // store muons info
@@ -134,8 +134,9 @@ void TMPEDMToNtuple::fillMuons() {
 
 void TMPEDMToNtuple::fillJets() {
 
-  currentEvBase->getByLabel( getUserParameter( "labelJets" ),
-                             jets );
+  // get muons through an interface to access data by label or by token
+  // according to CMSSW version
+  gt_jets.get( currentEvBase, jets );
   bool vJets = jets.isValid();
 
   // store jets info

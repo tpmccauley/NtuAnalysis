@@ -11,6 +11,8 @@
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
+#include "NtuAnalysis/Write/interface/NtuEDConsumer.h"
+
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -20,7 +22,7 @@
 //
 
 template <class T>
-class NtuWriteSteering: public edm::EDAnalyzer,
+class NtuWriteSteering: public NtuEDConsumer<edm::EDAnalyzer>,
                         public NtuWriteInterface<T>,
                         public virtual NtuAnalyzerUtil {
 

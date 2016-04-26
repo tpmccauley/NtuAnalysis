@@ -5,10 +5,13 @@
 #include "NtuAnalysis/Common/interface/NtuAnalyzerUtil.h"
 
 #include "NtuTool/EDM/interface/EDMTreeWriter.h"
+
 #include "FWCore/Framework/interface/Event.h"
 
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
+
+#include "NtuAnalysis/Write/interface/NtuEDConsumer.h"
 
 #include <string>
 #include <iostream>
@@ -20,6 +23,7 @@
 
 template <class T>
 class NtuEDMWriteSteering: public EDMTreeWriter,
+                           public NtuEDConsumer<edm::EDProducer>,
                            public T,
                            public virtual NtuAnalyzerUtil {
 

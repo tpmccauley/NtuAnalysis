@@ -9,7 +9,7 @@
 
 template <class T>
 NtuFilter<T>::NtuFilter( const edm::ParameterSet& ps ):
-  T( ps ) {
+  T( ps, this ) {
   histName = ps.getUntrackedParameter<std::string>( "histName" );
 }
 
@@ -36,20 +36,20 @@ void NtuFilter<T>::endJob()  {
 
 
 template <class T>
-bool NtuFilter<T>::beginRun(       edm::Run& run,
+void NtuFilter<T>::beginRun( const edm::Run& run,
                              const edm::EventSetup& es ) {
   currentRun     = &run;
   currentEvSetup = &es;
   T::beginRun();
-  return true;
+  return;
 }
 
 
 template <class T>
-bool NtuFilter<T>::endRun(       edm::Run& run,
+void NtuFilter<T>::endRun( const edm::Run& run,
                            const edm::EventSetup& es ) {
   T::endRun();
-  return true;
+  return;
 }
 
 

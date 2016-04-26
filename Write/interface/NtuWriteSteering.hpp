@@ -9,7 +9,7 @@
 
 template <class T>
 NtuWriteSteering<T>::NtuWriteSteering( const edm::ParameterSet& ps ):
-  NtuWriteInterface<T>( ps ) {
+  NtuWriteInterface<T>( ps, this ) {
   histName = ps.getUntrackedParameter<std::string>( "histName" );
 }
 

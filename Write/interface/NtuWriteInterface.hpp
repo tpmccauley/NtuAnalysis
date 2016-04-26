@@ -3,8 +3,10 @@
 #include "TROOT.h"
 
 template<class T>
-NtuWriteInterface<T>::NtuWriteInterface( const edm::ParameterSet& ps ):
-  T( ps ) {
+template<class C>
+NtuWriteInterface<T>::NtuWriteInterface( const edm::ParameterSet& ps,
+                                         NtuEDConsumer<C>* cb ):
+  T( ps, cb ) {
 
   std::cout << "NtuWriteInterface::NtuWriteInterface" << std::endl;
 

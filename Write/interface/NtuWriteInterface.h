@@ -3,6 +3,7 @@
 
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
+#include "NtuAnalysis/Write/interface/NtuEDConsumer.h"
 #include "NtuTool/Common/interface/TreeWriter.h"
 
 template<class T>
@@ -11,7 +12,8 @@ class NtuWriteInterface: public T,
 
  public:
 
-  NtuWriteInterface( const edm::ParameterSet& ps );
+  template<class C>
+  NtuWriteInterface( const edm::ParameterSet& ps, NtuEDConsumer<C>* cb );
   virtual ~NtuWriteInterface();
 
   virtual void beginJob();

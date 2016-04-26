@@ -5,6 +5,7 @@
 
 #include "NtuAnalysis/Common/interface/NtuEventHeader.h"
 #include "NtuAnalysis/Common/interface/NtuAnalyzerUtil.h"
+#include "NtuAnalysis/Write/interface/NtuEDConsumer.h"
 #include "NtuTool/Common/interface/TreeWrapper.h"
 
 #include "FWCore/Framework/interface/Event.h"
@@ -14,6 +15,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 class TFile;
 
 #define GET_PARAMETER( X, D ) getParameter( #X, X, D, true )
@@ -23,7 +25,7 @@ class NtuEDMAnalyzer: public virtual NtuEventHeader,
                       public virtual NtuAnalyzerUtil,
                       public virtual TreeWrapper {
 
- public:
+ protected:
 
   NtuEDMAnalyzer( const edm::ParameterSet& ps );
   virtual ~NtuEDMAnalyzer();
@@ -49,6 +51,51 @@ class NtuEDMAnalyzer: public virtual NtuEventHeader,
   virtual void read( const edm::EventBase& ev );
   virtual void endRun();
   virtual void endJob();
+
+  template<class Consumer, class Obj>
+  static void consume( NtuEDConsumer<Consumer>* c,
+                       typename NtuEDToken<Obj>::type& token,
+                       const std::string& label ) {
+    if ( label == "" ) return;
+    edm::InputTag tag( label );
+    if ( c != 0 ) c->consume<Obj>( token, tag );
+    return;
+  }
+  template<class Consumer, class Obj>
+  static void consume( NtuEDConsumer<Consumer>* c,
+                       typename NtuEDToken<Obj>::type& token,
+                       const edm::InputTag tag ) {
+    if ( c != 0 ) c->consume<Obj>( token, tag );
+    return;
+  }
+
+  template<class T>
+  class ObjectConsumer {
+   public:
+    ObjectConsumer( NtuEDMAnalyzer* a, NtuEDConsumer<T>* c ): 
+     analyzer( a ),
+     consumer( c ) {}
+    template<class Obj>
+    void consume( NtuEDToken<Obj>& nt,
+                  const std::string& label ) {
+      analyzer->consume<T,Obj>( consumer, nt.token, label );
+      return;
+    }
+    template<class Obj>
+    void consume( NtuEDToken<Obj>& nt,
+                  const edm::InputTag tag ) {
+      analyzer->consume<T,Obj>( consumer, nt.token, tag );
+      return;
+    }
+   private:
+    NtuEDMAnalyzer* analyzer;
+    NtuEDConsumer<T>* consumer;
+  };
+  template<class T>
+  ObjectConsumer<T>& getConsumer( NtuEDConsumer<T>* c ) {
+    static ObjectConsumer<T>* ptr = new ObjectConsumer<T>( this, c );
+    return *ptr;
+  }
 
  private:
 

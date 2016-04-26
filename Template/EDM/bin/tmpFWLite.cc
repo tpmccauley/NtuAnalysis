@@ -15,6 +15,7 @@
 #include "DataFormats/FWLite/interface/Event.h"
 #include "DataFormats/Common/interface/Handle.h"
 #include "FWCore/FWLite/interface/AutoLibraryLoader.h"
+#include "FWCore/Framework/interface/EDAnalyzer.h"
 
 #include "PhysicsTools/FWLite/interface/TFileService.h"
 #include "PhysicsTools/FWLite/interface/CommandLineParser.h"
@@ -24,6 +25,7 @@
 #include "DataFormats/FWLite/interface/InputSource.h"
 #include "DataFormats/FWLite/interface/OutputFiles.h"
 
+#include "NtuAnalysis/Write/interface/NtuEDConsumer.h"
 #include "TMPAnalysis/EDM/interface/TMPEDMToNtuple.h"
 #include "NtuAnalysis/Write/interface/NtuWriteInterface.h"
 
@@ -79,7 +81,8 @@ int main( int argc, char* argv[] ) {
 //  fwlite::TFileService fs = fwlite::TFileService( outputFile_.c_str() );
 
   cout << "create writer/analyzer" << endl;
-  NtuWriteInterface<TMPEDMToNtuple>* ntu = new NtuWriteInterface<TMPEDMToNtuple>( *pps );
+  NtuEDConsumer<edm::EDAnalyzer>* dumPtr = 0;
+  NtuWriteInterface<TMPEDMToNtuple>* ntu = new NtuWriteInterface<TMPEDMToNtuple>( *pps, dumPtr );
 
   ntu->beginJob();
 

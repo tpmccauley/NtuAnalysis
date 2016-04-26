@@ -7,7 +7,7 @@
 
 template <class T>
 NtuEDMWriteSteering<T>::NtuEDMWriteSteering( const edm::ParameterSet& ps ):
-  T( ps ) {
+  T( ps, this ) {
   histName = ps.getUntrackedParameter<std::string>( "histName" );
   initWrite();
 }

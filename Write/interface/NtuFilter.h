@@ -10,6 +10,8 @@
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
+#include "NtuAnalysis/Write/interface/NtuEDConsumer.h"
+
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -19,7 +21,7 @@
 //
 
 template <class T>
-class NtuFilter: public edm::EDFilter,
+class NtuFilter: public NtuEDConsumer<edm::EDFilter>,
                  public T,
                  public virtual NtuAnalyzerUtil {
 
@@ -40,8 +42,8 @@ class NtuFilter: public edm::EDFilter,
   int analyzedFile;
   std::string histName;
 
-  virtual bool beginRun(       edm::Run& run , const edm::EventSetup& es );
-  virtual bool endRun(         edm::Run& run , const edm::EventSetup& es );
+  virtual void beginRun( const edm::Run& run , const edm::EventSetup& es );
+  virtual void endRun(   const edm::Run& run , const edm::EventSetup& es );
   virtual bool filter(         edm::Event& ev, const edm::EventSetup& es );
 
 };
