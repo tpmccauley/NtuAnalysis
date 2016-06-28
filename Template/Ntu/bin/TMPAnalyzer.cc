@@ -15,7 +15,7 @@ using namespace std;
 
 TMPAnalyzer::TMPAnalyzer() {
 
-  std::cout << "new TMPAnalyzer" << std::endl;
+  cout << "new TMPAnalyzer" << endl;
 
   // user parameters are set as names associated to a string, 
   // default values can be set in the analyzer class contructor

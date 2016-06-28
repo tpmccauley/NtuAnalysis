@@ -93,7 +93,7 @@ void TMPProofLightAnalyzer::SlaveBegin(TTree * /*tree*/) {
 
   AutoSavedObject::obj_iter o_iter = autoSavedObject.objBegin();
   AutoSavedObject::obj_iter o_iend = autoSavedObject.objEnd();
-  std::string type;
+  string type;
   while ( o_iter != o_iend ) {
     TObject* obj = const_cast<TObject*>( *o_iter++ );
     if ( writable( obj ) ) fOutput->Add( obj );

@@ -1,16 +1,18 @@
 #include <iostream>
 
+using namespace std;
+
 #include "TMPAnalysis/Ntu/interface/TMPNtupleData.h"
 
 TMPNtupleData::TMPNtupleData() {
 
   // muons
   nMuons = 0;
-  muoPt = new std::vector<number>;
+  muoPt = new vector<number>;
 
   // jets
   nJets = 0;
-  jetPt = new std::vector<number>;
+  jetPt = new vector<number>;
 
 }
 

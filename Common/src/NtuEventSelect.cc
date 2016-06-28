@@ -11,6 +11,8 @@
 #include <fstream>
 #include <sstream>
 
+using namespace std;
+
 NtuEventSelect::ev_compare NtuEventSelect::ev_compare::instance;
 
 NtuEventSelect::NtuEventSelect() {
@@ -21,12 +23,12 @@ NtuEventSelect::~NtuEventSelect() {
 }
 
 
-bool NtuEventSelect::read( const std::string& name ) {
+bool NtuEventSelect::read( const string& name ) {
   if ( name == "" ) return false;
-  std::ifstream file( name.c_str() );
-  std::stringstream sstr;
+  ifstream file( name.c_str() );
+  stringstream sstr;
   char* line = new char[1000];
-  std::vector<ev_id> evList;
+  vector<ev_id> evList;
   evList.reserve( 100000 );
   bool flag = false;
   while ( file.getline( line, 1000 ) ) {

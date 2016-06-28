@@ -49,13 +49,13 @@ int main( int argc, char* argv[] ) {
   // parse arguments
   parser.parseArguments ( argc, argv );
 
-  std::vector<std::string> inputFiles_;
+  vector<string> inputFiles_;
   int maxEvents_ = 0;
 //  unsigned int outputEvery_ = 999999;
-  std::string outputFile_;
+  string outputFile_;
 
   const edm::ParameterSet* pps = 0;
-  std::string cfg = parser.stringValue( "cfg" );
+  string cfg = parser.stringValue( "cfg" );
   if ( edm::readPSetsFrom( cfg )->existsAs<edm::ParameterSet>( "process" ) ) {
     // get the python configuration
     const edm::ParameterSet& process =
