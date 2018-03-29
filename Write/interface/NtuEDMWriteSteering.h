@@ -12,6 +12,7 @@
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
 #include "NtuAnalysis/Write/interface/NtuEDConsumer.h"
+#include "NtuTool/EDM/interface/EDProducerWrapper.h"
 
 #include <string>
 #include <iostream>
@@ -23,7 +24,7 @@
 
 template <class T>
 class NtuEDMWriteSteering: public EDMTreeWriter,
-                           public NtuEDConsumer<edm::EDProducer>,
+                           public NtuEDConsumer<EDProducerWrapper>,
                            public T,
                            public virtual NtuAnalyzerUtil {
 

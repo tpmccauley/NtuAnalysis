@@ -11,6 +11,7 @@
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
 #include "NtuAnalysis/Write/interface/NtuEDConsumer.h"
+#include "NtuTool/EDM/interface/EDFilterWrapper.h"
 
 #include <string>
 #include <iostream>
@@ -21,7 +22,7 @@
 //
 
 template <class T>
-class NtuFilter: public NtuEDConsumer<edm::EDFilter>,
+class NtuFilter: public NtuEDConsumer<EDFilterWrapper>,
                  public T,
                  public virtual NtuAnalyzerUtil {
 

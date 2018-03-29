@@ -25,6 +25,8 @@ class TMPEDMToNtuple: public TMPAnalyzer,
   template<class T>
   TMPEDMToNtuple( const edm::ParameterSet& ps, NtuEDConsumer<T>* c  ):
    NtuEDMAnalyzer( ps ) {
+    // parse ParameterSet
+    build( ps );
     // interface to allow uniform access to data in different CMSSW versions
     ObjectConsumer<T>& oc = getConsumer( c );
     oc.consume< std::vector<pat::Muon> >( gt_muons,

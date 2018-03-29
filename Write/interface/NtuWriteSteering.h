@@ -12,6 +12,7 @@
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
 #include "NtuAnalysis/Write/interface/NtuEDConsumer.h"
+#include "NtuTool/EDM/interface/EDAnalyzerWrapper.h"
 
 #include <string>
 #include <iostream>
@@ -22,7 +23,7 @@
 //
 
 template <class T>
-class NtuWriteSteering: public NtuEDConsumer<edm::EDAnalyzer>,
+class NtuWriteSteering: public NtuEDConsumer<EDAnalyzerWrapper>,
                         public NtuWriteInterface<T>,
                         public virtual NtuAnalyzerUtil {
 

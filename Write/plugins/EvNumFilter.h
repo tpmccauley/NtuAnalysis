@@ -9,6 +9,7 @@
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
 #include "NtuAnalysis/Common/interface/NtuEventSelect.h"
+#include "NtuTool/EDM/interface/EDFilterWrapper.h"
 
 #include <string>
 #include <iostream>
@@ -18,7 +19,7 @@
 // class declaration
 //
 
-class EvNumFilter: public edm::EDFilter,
+class EvNumFilter: public EDFilterWrapper,
                    public NtuEventSelect {
 
  public:
