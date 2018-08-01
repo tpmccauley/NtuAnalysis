@@ -58,14 +58,14 @@ class NtuEDMAnalyzer: public virtual NtuEventHeader,
                        const std::string& label ) {
     if ( label == "" ) return;
     edm::InputTag tag( label );
-    if ( c != 0 ) c->consume<Obj>( token, tag );
+    if ( c != 0 ) c->template consume<Obj>( token, tag );
     return;
   }
   template<class Consumer, class Obj>
   static void consume( NtuEDConsumer<Consumer>* c,
                        typename NtuEDToken<Obj>::type& token,
                        const edm::InputTag tag ) {
-    if ( c != 0 ) c->consume<Obj>( token, tag );
+    if ( c != 0 ) c->template consume<Obj>( token, tag );
     return;
   }
 
@@ -78,13 +78,13 @@ class NtuEDMAnalyzer: public virtual NtuEventHeader,
     template<class Obj>
     void consume( NtuEDToken<Obj>& nt,
                   const std::string& label ) {
-      analyzer->consume<T,Obj>( consumer, nt.token, label );
+      analyzer->template consume<T,Obj>( consumer, nt.token, label );
       return;
     }
     template<class Obj>
     void consume( NtuEDToken<Obj>& nt,
                   const edm::InputTag tag ) {
-      analyzer->consume<T,Obj>( consumer, nt.token, tag );
+      analyzer->template consume<T,Obj>( consumer, nt.token, tag );
       return;
     }
    private:
