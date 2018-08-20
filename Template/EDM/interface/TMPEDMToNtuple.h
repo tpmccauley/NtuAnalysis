@@ -29,10 +29,10 @@ class TMPEDMToNtuple: public TMPAnalyzer,
     build( ps );
     // interface to allow uniform access to data in different CMSSW versions
     ObjectConsumer<T>& oc = getConsumer( c );
-    oc.consume< std::vector<pat::Muon> >( gt_muons,
-                                        labelMuons );
-    oc.consume< std::vector<pat::Jet > >( gt_jets ,
-                                        labelJets  );
+    oc.template consume< std::vector<pat::Muon> >( gt_muons,
+                                                 labelMuons );
+    oc.template consume< std::vector<pat::Jet > >( gt_jets ,
+                                                 labelJets  );
   }
   virtual ~TMPEDMToNtuple();
 
