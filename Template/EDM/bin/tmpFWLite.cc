@@ -28,6 +28,7 @@
 #include "NtuAnalysis/Write/interface/NtuEDConsumer.h"
 #include "TMPAnalysis/EDM/interface/TMPEDMToNtuple.h"
 #include "NtuAnalysis/Write/interface/NtuWriteInterface.h"
+#include "NtuAnalysis/Write/interface/NtuParameterSetWrapper.h"
 
 using namespace std;
 
@@ -56,10 +57,10 @@ int main( int argc, char* argv[] ) {
 
   const edm::ParameterSet* pps = 0;
   string cfg = parser.stringValue( "cfg" );
-  if ( edm::readPSetsFrom( cfg )->existsAs<edm::ParameterSet>( "process" ) ) {
+  if ( NtuParameterSetWrapper::readPSetsFrom( cfg )->existsAs<edm::ParameterSet>( "process" ) ) {
     // get the python configuration
     const edm::ParameterSet& process =
-          edm::readPSetsFrom( cfg )
+          NtuParameterSetWrapper::readPSetsFrom( cfg )
           ->getParameter<edm::ParameterSet>( "process" );
     fwlite::InputSource  inputHandler_( process );
 //    fwlite::OutputFiles outputHandler_( process );
