@@ -36,9 +36,9 @@ class NtuParameterSetWrapper {
 
   /** Operations
    */
-  static std::unique_ptr<edm::ParameterSet> readPSetsFrom(
+  static std::shared_ptr<edm::ParameterSet> readPSetsFrom(
                                             const std::string& fileOrString ) {
-    return edm::boost_python::readPSetsFrom( fileOrString );
+    return edm::readPSetsFrom( fileOrString );
   }
 
 };
