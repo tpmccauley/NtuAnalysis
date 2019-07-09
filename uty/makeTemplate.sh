@@ -103,7 +103,6 @@ create_name Ntu/bin Analyzer.h
 create_name Ntu/bin AnalyzerUtil.h
 create_name Ntu/bin Analyzer.cc
 create_name Ntu/bin AnalyzerUtil.cc
-create_name Ntu/bin AnalyzerFW.cc
 create_name Ntu/bin ProofSetup.cc
 create_name Ntu/bin ProofAnalyzer.h
 create_name Ntu/bin ProofAnalyzer.cc
