@@ -13,16 +13,24 @@
 #include "NtuAnalysis/Common/src/NtuEventSelect.cc"
 #include "NtuAnalysis/Common/src/NtuAnalyzerUtil.cc"
 #include "TMPAnalysis/Ntu/src/TMPNtupleData.cc"
-#include "TMPAnalysis/Ntu/src/TMPAnalyzerUtil.cc"
-#include "TMPAnalysis/Ntu/src/TMPAnalyzer.cc"
+#include "TMPAnalysis/Ntu/bin/TMPAnalyzerUtil.cc"
+#include "TMPAnalysis/Ntu/bin/TMPAnalyzer.cc"
 #include "TFile.h"
 #include "TChain.h"
 #include <fstream>
 
+class TMPMacroAnalyzer: public virtual TMPAnalyzerUtil,
+                        public virtual TMPAnalyzer {
+ public:
+  TMPMacroAnalyzer() {}
+  ~TMPMacroAnalyzer() {}
+  void setupNtuple() { PDAnalyzerUtil::setupNtuple(); }
+};
+
 // set nMax <= 0 to analyze all events
 void tmpMacro( const std::string& dataset, int nMax = -1 ) {
 
-  TMPAnalyzer* ntu = new TMPAnalyzer;
+  TMPMacroAnalyzer* ntu = new TMPMacroAnalyzer;
   ntu->setUserParameter( "verbose", "f" );
 //  ntu->setConfiguration( "cfg.txt" );
   ntu->beginJob();

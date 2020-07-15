@@ -67,8 +67,13 @@ void TMPAnalyzer::book() {
 
 
 void TMPAnalyzer::reset() {
-// automatic reset
+#  if UTIL_USE == FULL
+  // automatic reset of ntu content at zero
   autoReset();
+#elif UTIL_USE == BARE
+  // if ntu content is to be reset at zero that should be done manually
+  // when not using the full utility
+#endif
   return;
 }
 
@@ -135,7 +140,6 @@ void TMPAnalyzer::save() {
   hptmu2nd->Write();
   hptmu   ->Write();
 #endif
-
   return;
 }
 

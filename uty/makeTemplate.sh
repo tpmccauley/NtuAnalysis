@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ -z ${CMSSW_BASE} ] ; then
+  echo "CMSSW_BASE not defined; run \"cmsenv\" before"
+  exit
+fi
+
 export CURRENTDIR=`/bin/pwd`
 
 export PREFIX=`echo $1 | awk '{print toupper($0)}'`
@@ -28,6 +33,7 @@ cat $1 |\
     sed s/${PRETMP}AnalyzerUtil/${PREFIX}AnalyzerUtil/g |\
     sed s/${PRETMP}AnalyzerFW/${PREFIX}AnalyzerFW/g |\
     sed s/${PRETMP}Analyzer/${PREFIX}Analyzer/g |\
+    sed s/${PRETMP}MacroAnalyzer/${PREFIX}MacroAnalyzer/g |\
     sed s/${PRETMP}EDMAnalyzer/${PREFIX}EDMAnalyzer/g |\
     sed s/${PRETMP}NtupleData/${PREFIX}NtupleData/g |\
     sed s/${PRETMP}NtupleBranch/${PREFIX}NtupleBranch/g |\
@@ -79,26 +85,24 @@ sed s#TMPNTUANADIR#${SUBSYSTEM}/Ntu/bin# \
 rm -f ${SUBSYSTEM}/Ntu/bin/${LOWTMP}$1
 }
 
-mkdir ${SUBSYSTEM}
-mkdir ${SUBSYSTEM}/Ntu
+mkdir -p ${SUBSYSTEM}/Ntu
 create_same Ntu/BuildFile.xml
 
-mkdir ${SUBSYSTEM}/Ntu/interface
+mkdir -p ${SUBSYSTEM}/Ntu/interface
 create_name Ntu/interface NtupleData.h
 create_name Ntu/interface NtupleBranch.h
 create_name Ntu/interface NtupleBranch.hpp
 
-mkdir ${SUBSYSTEM}/Ntu/src
+mkdir -p ${SUBSYSTEM}/Ntu/src
 create_name Ntu/src NtupleData.cc
 create_name Ntu/src AnalyzerFW.cc
 
-mkdir ${SUBSYSTEM}/Ntu/bin
+mkdir -p ${SUBSYSTEM}/Ntu/bin
 create_same Ntu/bin/BuildFile.xml
 create_name Ntu/bin Analyzer.h
 create_name Ntu/bin AnalyzerUtil.h
 create_name Ntu/bin Analyzer.cc
 create_name Ntu/bin AnalyzerUtil.cc
-create_name Ntu/bin AnalyzerFW.cc
 create_name Ntu/bin ProofSetup.cc
 create_name Ntu/bin ProofAnalyzer.h
 create_name Ntu/bin ProofAnalyzer.cc
@@ -122,16 +126,16 @@ create_temp ProofAnalyzer.cc
 create_temp ProofLightAnalyzer.cc
 create_tlow Proof.mac
 
-mkdir ${SUBSYSTEM}/EDM
+mkdir -p ${SUBSYSTEM}/EDM
 create_same EDM/BuildFile.xml
 
-mkdir ${SUBSYSTEM}/EDM/interface
+mkdir -p ${SUBSYSTEM}/EDM/interface
 create_name EDM/interface EDMToNtuple.h
 
-mkdir ${SUBSYSTEM}/EDM/src
+mkdir -p ${SUBSYSTEM}/EDM/src
 create_name EDM/src EDMToNtuple.cc
 
-mkdir ${SUBSYSTEM}/EDM/bin
+mkdir -p ${SUBSYSTEM}/EDM/bin
 create_same EDM/bin/BuildFile.xml
 create_nlow EDM/bin FWLite.cc
 create_same EDM/bin/cfg_fwlite.py
@@ -139,7 +143,7 @@ create_same EDM/bin/cfg_fwfull.py
 create_same EDM/bin/cfg_fwfEDM.py
 create_same EDM/bin/cfg_filter.py
 
-mkdir ${SUBSYSTEM}/EDM/plugins
+mkdir -p ${SUBSYSTEM}/EDM/plugins
 create_same EDM/plugins/BuildFile.xml
 create_name EDM/plugins Ntuplizer.cc
 create_name EDM/plugins EDMNtuplizer.cc

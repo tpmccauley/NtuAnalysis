@@ -37,7 +37,9 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
   NtuInterface() {}
   virtual ~NtuInterface() {}
 
+#  if UTIL_USE == FULL
  protected:
+#endif
 
   void beginJob() {
     std::string evl = this->getUserParameter( "eventList" );
@@ -73,6 +75,10 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
     return true;
   }
 
+#  if UTIL_USE == BARE
+ protected:
+#endif
+
   void dumpEvent( std::ostream& os,
                   const std::string& label = std::string( "" ),
                   bool endLine = true ) {
@@ -81,8 +87,6 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
     if ( endLine ) os << std::endl;
     return;
   }
-
- protected:
 
  private:
 

@@ -135,6 +135,18 @@ class NtuLightReader {
            gROOT->cd();
       return *this;
     }
+    template<class T>
+    AutoSavedObject& operator=( const std::vector<T*>& vObj ) {
+      int i;
+      int n = vObj.size();
+      for ( i = 0; i < n; ++i ) *this = vObj[i];
+      return *this;
+    }
+    template<class T>
+    AutoSavedObject& operator=( const std::vector<T*>* vObj ) {
+      *this = *vObj;
+      return *this;
+    }
    private:
     obj_list objectList;
     dir_map directoryMap;
@@ -146,6 +158,7 @@ class NtuLightReader {
   virtual bool writable( const std::string& type ) {
     if ( type.substr( 0, 2 ) == "TH"       ) return true;
     if ( type                == "TProfile" ) return true;
+    if ( type                == "TCanvas"  ) return true;
     return false;
   }
   void autoSave( TList* list = 0 ) {
