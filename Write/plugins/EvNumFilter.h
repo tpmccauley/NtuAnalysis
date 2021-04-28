@@ -25,22 +25,22 @@ class EvNumFilter: public EDFilterWrapper,
  public:
 
   explicit EvNumFilter( const edm::ParameterSet& ps );
-  ~EvNumFilter();
+  ~EvNumFilter() override;
 
-  virtual void beginJob();
-  virtual void endJob();
+  void beginJob() override;
+  void endJob() override;
 
  private:
 
   // dummy copy constructor and assignment
-  EvNumFilter           ( const EvNumFilter& c );
-  EvNumFilter& operator=( const EvNumFilter& c );
+  EvNumFilter           ( const EvNumFilter& c ) = delete;
+  EvNumFilter& operator=( const EvNumFilter& c ) = delete;
 
   std::string eventList;
   std::string listType;
   bool skipList;
 
-  virtual bool filter(         edm::Event& ev, const edm::EventSetup& es );
+  bool filter( edm::Event& ev, const edm::EventSetup& es ) override;
 
 };
 

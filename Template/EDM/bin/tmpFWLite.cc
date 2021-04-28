@@ -55,7 +55,7 @@ int main( int argc, char* argv[] ) {
 //  unsigned int outputEvery_ = 999999;
   string outputFile_;
 
-  const edm::ParameterSet* pps = 0;
+  const edm::ParameterSet* pps = nullptr;
   string cfg = parser.stringValue( "cfg" );
   if ( NtuParameterSetWrapper::readPSetsFrom( cfg )->existsAs<edm::ParameterSet>( "process" ) ) {
     // get the python configuration
@@ -82,7 +82,7 @@ int main( int argc, char* argv[] ) {
 //  fwlite::TFileService fs = fwlite::TFileService( outputFile_.c_str() );
 
   cout << "create writer/analyzer" << endl;
-  NtuEDConsumer<edm::EDAnalyzer>* dumPtr = 0;
+  NtuEDConsumer<edm::EDAnalyzer>* dumPtr = nullptr;
   NtuWriteInterface<TMPEDMToNtuple>* ntu = new NtuWriteInterface<TMPEDMToNtuple>( *pps, dumPtr );
 
   ntu->beginJob();
@@ -120,5 +120,6 @@ int main( int argc, char* argv[] ) {
   ntt->save( outputFile_.c_str() );
 
   return 0;
+
 }
 

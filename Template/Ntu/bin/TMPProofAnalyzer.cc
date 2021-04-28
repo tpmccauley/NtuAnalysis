@@ -1,5 +1,5 @@
 #define UTIL_USE FULL
-#include "NtuTool/Read/interface/TreeReader.h"
+#include "NtuTool/Common/interface/TreeReader.h"
 #include "TH1.h"
 #include "TStyle.h"
 #include <iostream>
@@ -19,14 +19,14 @@
 #include "NtuTool/Common/src/DataReset.cc"
 #include "NtuTool/Common/src/DataResetString.cc"
 #include "NtuTool/Common/src/TreeWrapper.cc"
-#include "NtuTool/Read/src/TreeReader.cc"
+#include "NtuTool/Common/src/TreeReader.cc"
 #include "NtuTool/Read/src/EDMTreeReader.cc"
 #include "NtuTool/Read/src/EDMStringReader.cc"
 #include "NtuTool/Read/src/EDMTypeReaderManager.cc"
 
-#include "NtuTool/Common/src/TreeTypeWriterTS.cc"
-#include "NtuTool/Common/src/TreeTypeWriterSTL.cc"
-#include "NtuTool/Common/src/TreeTypeWriterMath.cc"
+#include "NtuTool/Common/src/TreeTypeHandlerTS.cc"
+#include "NtuTool/Common/src/TreeTypeHandlerSTL.cc"
+#include "NtuTool/Common/src/TreeTypeHandlerMath.cc"
 
 #include "NtuAnalysis/Common/src/NtuData.cc"
 #include "TMPAnalysis/Ntu/src/TMPNtupleData.cc"

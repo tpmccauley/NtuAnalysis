@@ -40,6 +40,7 @@ cat $1 |\
     sed s/${PRETMP}EDMToNtuple/${PREFIX}EDMToNtuple/g |\
     sed s/${PRETMP}Ntuplizer/${PREFIX}Ntuplizer/g |\
     sed s/${PRETMP}EDMNtuplizer/${PREFIX}EDMNtuplizer/g |\
+    sed s/${PRETMP}NANONtuplizer/${PREFIX}NANONtuplizer/g |\
     sed s/${PRETMP}Proof/${PREFIX}Proof/g |\
     sed s/${PRETMP}Filter/${PREFIX}Filter/g |\
     sed s/${PRETMP}_PACK/${PREFIX}_PACK/g |\

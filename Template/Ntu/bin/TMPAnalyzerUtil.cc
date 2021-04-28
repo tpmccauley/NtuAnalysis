@@ -53,6 +53,6 @@ bool TMPAnalyzerUtil::preSelect( int ientry ) {
   std::cout << nMuons  << " muons" << std::endl;
   // skip events with no muons
   if ( !nMuons ) return false;
-  currentTree->GetEntry( ientry );
+  currentTree()->GetEntry( ientry );
   return true;
 }

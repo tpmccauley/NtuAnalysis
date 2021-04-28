@@ -21,7 +21,7 @@ class NtuAnalyzerUtil: public NtuEventSelect,
  public:
 
   NtuAnalyzerUtil();
-  virtual ~NtuAnalyzerUtil();
+  ~NtuAnalyzerUtil() override;
 
  protected:
 
@@ -45,8 +45,8 @@ class NtuAnalyzerUtil: public NtuEventSelect,
  private:
 
   // dummy copy constructor and assignment
-  NtuAnalyzerUtil           ( const NtuAnalyzerUtil& );
-  NtuAnalyzerUtil& operator=( const NtuAnalyzerUtil& );
+  NtuAnalyzerUtil           ( const NtuAnalyzerUtil& ) = delete;
+  NtuAnalyzerUtil& operator=( const NtuAnalyzerUtil& ) = delete;
 
 
 };

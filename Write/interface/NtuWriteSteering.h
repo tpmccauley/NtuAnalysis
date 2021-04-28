@@ -30,23 +30,23 @@ class NtuWriteSteering: public NtuEDConsumer<EDAnalyzerWrapper>,
  public:
 
   explicit NtuWriteSteering( const edm::ParameterSet& ps );
-  ~NtuWriteSteering();
+  ~NtuWriteSteering() override;
 
-  virtual void beginJob();
-  virtual void endJob();
+  void beginJob() override;
+  void endJob() override;
 
  private:
 
   // dummy copy constructor and assignment
-  NtuWriteSteering           ( const NtuWriteSteering& c );
-  NtuWriteSteering& operator=( const NtuWriteSteering& c );
+  NtuWriteSteering           ( const NtuWriteSteering& c ) = delete;
+  NtuWriteSteering& operator=( const NtuWriteSteering& c ) = delete;
 
   int analyzedFile;
   std::string histName;
 
-  virtual void beginRun( const edm::Run  & run, const edm::EventSetup& es );
-  virtual void endRun(   const edm::Run  & run, const edm::EventSetup& es );
-  virtual void analyze(  const edm::Event&  ev, const edm::EventSetup& es );
+  void beginRun( const edm::Run  & run, const edm::EventSetup& es ) override;
+  void endRun(   const edm::Run  & run, const edm::EventSetup& es ) override;
+  void analyze(  const edm::Event&  ev, const edm::EventSetup& es ) override;
 
 };
 

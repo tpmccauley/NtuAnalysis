@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "TMPAnalyzer.h"
-#include "NtuTool/Read/interface/TreeReader.h"
+#include "NtuTool/Common/interface/TreeReader.h"
 #include "NtuTool/Read/interface/EDMTreeReader.h"
 
 #include "TMPProofSetup.cc"

@@ -22,7 +22,7 @@ class TMPEDMToNtuple: public TMPAnalyzer,
 
  public:
 
-  template<class T>
+  template <class T>
   TMPEDMToNtuple( const edm::ParameterSet& ps, NtuEDConsumer<T>* c  ):
    NtuEDMAnalyzer( ps ) {
     // parse ParameterSet
@@ -34,7 +34,7 @@ class TMPEDMToNtuple: public TMPAnalyzer,
     oc.template consume< std::vector<pat::Jet > >( gt_jets ,
                                                  labelJets  );
   }
-  virtual ~TMPEDMToNtuple();
+  ~TMPEDMToNtuple() override;
 
   virtual void beginJob();
   virtual void beginRun();
@@ -44,7 +44,7 @@ class TMPEDMToNtuple: public TMPAnalyzer,
 
  private:
 
-  template<class PATObject> class CompareByPt {
+  template <class PATObject> class CompareByPt {
    public:
     bool operator()( const PATObject* l, const PATObject* r ) {
       return l->pt() > r->pt();

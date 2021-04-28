@@ -28,14 +28,14 @@ typedef NtuLightReader WrapperBase;
 #include <iostream>
 #include <string>
 
-template<class T>
+template <class T>
 class NtuInterface: public virtual NtuAnalyzerUtil,
                     public virtual T {
 
  public:
 
   NtuInterface() {}
-  virtual ~NtuInterface() {}
+  ~NtuInterface() override {}
 
 #  if UTIL_USE == FULL
  protected:
@@ -55,8 +55,8 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
   }
 
   virtual bool getEntry( int ientry ) {
-    if ( currentEvBase != 0 ) return false;
-    if ( currentEvent  != 0 ) return false;
+    if ( currentEvBase != nullptr ) return false;
+    if ( currentEvent  != nullptr ) return false;
     getHeader( ientry );
     if ( skipList != find( runNumber, eventNumber ) )
          return preSelect( ientry );
@@ -64,14 +64,14 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
   }
 
   virtual void getEntry( TBranch* branch, int ientry ) {
-    if ( currentEvBase != 0 ) return;
-    if ( currentEvent  != 0 ) return;
+    if ( currentEvBase != nullptr ) return;
+    if ( currentEvent  != nullptr ) return;
     branch->GetEntry( ientry );
     T::process( branch, ientry );
   }
 
   virtual bool preSelect( int ientry ) {
-    T::currentTree->GetEntry( ientry );
+    T::currentTree()->GetEntry( ientry );
     return true;
   }
 
@@ -91,8 +91,8 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
  private:
 
   // dummy copy constructor and assignment
-  NtuInterface           ( const NtuInterface& );
-  NtuInterface& operator=( const NtuInterface& );
+  NtuInterface           ( const NtuInterface& ) = delete;
+  NtuInterface& operator=( const NtuInterface& ) = delete;
 
 };
 

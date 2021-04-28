@@ -5,7 +5,7 @@
 #include "vector"
 #include "math.h"
 
-template<class T>
+template <class T>
 class NtuUtil {
 
  public:
@@ -187,7 +187,7 @@ class NtuUtil {
 };
 
 
-template<class Key,class Val>
+template <class Key,class Val>
 class ConstMap {
  public:
   ConstMap<Key,Val>() { cmp = 0; }

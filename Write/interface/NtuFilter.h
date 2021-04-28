@@ -29,10 +29,10 @@ class NtuFilter: public NtuEDConsumer<EDFilterWrapper>,
  public:
 
   explicit NtuFilter( const edm::ParameterSet& ps );
-  ~NtuFilter();
+  ~NtuFilter() override;
 
-  virtual void beginJob();
-  virtual void endJob();
+  void beginJob() override;
+  void endJob() override;
 
  private:
 
@@ -43,9 +43,9 @@ class NtuFilter: public NtuEDConsumer<EDFilterWrapper>,
   int analyzedFile;
   std::string histName;
 
-  virtual void beginRun( const edm::Run& run , const edm::EventSetup& es );
-  virtual void endRun(   const edm::Run& run , const edm::EventSetup& es );
-  virtual bool filter(         edm::Event& ev, const edm::EventSetup& es );
+  void beginRun( const edm::Run& run , const edm::EventSetup& es ) override;
+  void endRun(   const edm::Run& run , const edm::EventSetup& es ) override;
+  bool filter(         edm::Event& ev, const edm::EventSetup& es ) override;
 
 };
 

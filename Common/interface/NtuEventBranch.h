@@ -10,7 +10,7 @@ class NtuEventBranch: public virtual NtuEventHeader, public virtual T {
 
  public:
 
-  virtual ~NtuEventBranch();
+  ~NtuEventBranch() override;
 
  protected:
 
@@ -26,8 +26,8 @@ class NtuEventBranch: public virtual NtuEventHeader, public virtual T {
  private:
 
   // dummy copy constructor and assignment
-  NtuEventBranch           ( const NtuEventBranch& td );
-  NtuEventBranch& operator=( const NtuEventBranch& td );
+  NtuEventBranch           ( const NtuEventBranch& td ) = delete;
+  NtuEventBranch& operator=( const NtuEventBranch& td ) = delete;
 
 };
 
