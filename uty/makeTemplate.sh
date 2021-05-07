@@ -148,5 +148,6 @@ mkdir -p ${SUBSYSTEM}/EDM/plugins
 create_same EDM/plugins/BuildFile.xml
 create_name EDM/plugins Ntuplizer.cc
 create_name EDM/plugins EDMNtuplizer.cc
+create_name EDM/plugins NANONtuplizer.cc
 create_name EDM/plugins Filter.cc
 
