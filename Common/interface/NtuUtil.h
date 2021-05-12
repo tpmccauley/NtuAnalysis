@@ -190,13 +190,13 @@ class NtuUtil {
 template <class Key,class Val>
 class ConstMap {
  public:
-  ConstMap<Key,Val>() { cmp = 0; }
-  ConstMap<Key,Val>( const Val& v ) { cmp = 0; val = v; }
+  ConstMap<Key,Val>() { cmp = nullptr; }
+  ConstMap<Key,Val>( const Val& v ) { cmp = nullptr; val = v; }
   ConstMap<Key,Val>( const std::map<Key,Val>& map ) { cmp = &map; }
   ConstMap<Key,Val>( const std::map<Key,Val>& map, const Val& v ) {
     cmp = &map; val = v; }
   const Val& operator[]( Key key ) {
-    if ( cmp == 0 ) return val;
+    if ( cmp == nullptr ) return val;
     typename std::map<Key,Val>::const_iterator iter = cmp->find( key );
     typename std::map<Key,Val>::const_iterator iend = cmp->end();
     if ( iter != iend ) return iter->second;
