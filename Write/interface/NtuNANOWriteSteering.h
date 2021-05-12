@@ -24,9 +24,9 @@
 
 template <class T>
 class NtuNANOWriteSteering: public NANOTreeWriter,
-                           public NtuEDConsumer<EDProducerWrapper>,
-                           public T,
-                           public virtual NtuAnalyzerUtil {
+                            public NtuEDConsumer<EDProducerWrapper>,
+                            public T,
+                            public virtual NtuAnalyzerUtil {
 
  public:
 
