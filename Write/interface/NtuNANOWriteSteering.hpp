@@ -35,8 +35,8 @@ void NtuNANOWriteSteering<T>::endJob()  {
 
 
 template <class T>
-void NtuNANOWriteSteering<T>::beginRun( edm::Run& run,
-                                  const edm::EventSetup& es ) {
+void NtuNANOWriteSteering<T>::beginRun( const edm::Run& run,
+                                        const edm::EventSetup& es ) {
   currentRun     = &run;
   currentEvSetup = &es;
   T::beginRun();
@@ -45,8 +45,8 @@ void NtuNANOWriteSteering<T>::beginRun( edm::Run& run,
 
 
 template <class T>
-void NtuNANOWriteSteering<T>::endRun( edm::Run& run,
-                                const edm::EventSetup& es ) {
+void NtuNANOWriteSteering<T>::endRun( const edm::Run& run,
+                                      const edm::EventSetup& es ) {
   T::endRun();
   return;
 }

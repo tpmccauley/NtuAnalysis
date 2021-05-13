@@ -2,6 +2,7 @@
 #ifndef NtuFilter_h
 #define NtuFilter_h
 
+#include "NtuAnalysis/Write/interface/NtuWriteInterface.h"
 #include "NtuAnalysis/Common/interface/NtuAnalyzerUtil.h"
 
 #include "FWCore/Framework/interface/EDFilter.h"
@@ -23,7 +24,7 @@
 
 template <class T>
 class NtuFilter: public NtuEDConsumer<EDFilterWrapper>,
-                 public T,
+                 public NtuWriteInterface<T>,
                  public virtual NtuAnalyzerUtil {
 
  public:

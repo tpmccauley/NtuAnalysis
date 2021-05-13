@@ -45,9 +45,9 @@ class NtuNANOWriteSteering: public NANOTreeWriter,
   int analyzedFile;
   std::string histName;
 
-  void beginRun(   edm::Run  & run, const edm::EventSetup& es ) override;
-  void endRun(     edm::Run  & run, const edm::EventSetup& es ) override;
-  bool fill( const edm::Event&  ev, const edm::EventSetup& es ) override;
+  void beginRun( const edm::Run  & run, const edm::EventSetup& es ) override;
+  void endRun(   const edm::Run  & run, const edm::EventSetup& es ) override;
+  bool fill(     const edm::Event&  ev, const edm::EventSetup& es ) override;
 
 };
 

@@ -35,8 +35,8 @@ void NtuEDMWriteSteering<T>::endJob()  {
 
 
 template <class T>
-void NtuEDMWriteSteering<T>::beginRun( edm::Run& run,
-                                 const edm::EventSetup& es ) {
+void NtuEDMWriteSteering<T>::beginRun( const edm::Run& run,
+                                       const edm::EventSetup& es ) {
   currentRun     = &run;
   currentEvSetup = &es;
   T::beginRun();
@@ -45,8 +45,8 @@ void NtuEDMWriteSteering<T>::beginRun( edm::Run& run,
 
 
 template <class T>
-void NtuEDMWriteSteering<T>::endRun( edm::Run& run,
-                               const edm::EventSetup& es ) {
+void NtuEDMWriteSteering<T>::endRun( const edm::Run& run,
+                                     const edm::EventSetup& es ) {
   T::endRun();
   return;
 }
