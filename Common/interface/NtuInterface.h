@@ -49,8 +49,8 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
   }
 
   bool lightAnalyze( int entry, int event_file ) {
-    bool acceptEv = this->analyze( entry, event_file, T::analyzedEvts++ );
-    if ( acceptEv ) T::acceptedEvts++;
+    bool acceptEv = this->analyze( entry, event_file, this->analyzedEvts++ );
+    if ( acceptEv ) this->acceptedEvts++;
     return acceptEv;
   }
 
@@ -58,9 +58,10 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
     if ( currentEvBase != nullptr ) return false;
     if ( currentEvent  != nullptr ) return false;
     getHeader( ientry );
-    if ( skipList != find( runNumber, eventNumber ) )
-         return preSelect( ientry );
-    else return false;
+    if ( skipList == find( runNumber, eventNumber ) ) return false;
+    if ( !preSelect( ientry ) ) return false;
+    this->currentTree()->GetEntry( ientry );
+    return true;
   }
 
   virtual void getEntry( TBranch** branch, int ientry ) {
@@ -71,7 +72,7 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
   }
 
   virtual bool preSelect( int ientry ) {
-    T::currentTree()->GetEntry( ientry );
+//    T::currentTree()->GetEntry( ientry );
     return true;
   }
 

@@ -49,10 +49,8 @@ void TMPAnalyzerUtil::beginJob() {
 bool TMPAnalyzerUtil::preSelect( int ientry ) {
   // get number of muons
   getEntry( b_nMuons, ientry );
-  process( b_nMuons, ientry );
   std::cout << nMuons  << " muons" << std::endl;
   // skip events with no muons
   if ( !nMuons ) return false;
-  currentTree()->GetEntry( ientry );
   return true;
 }
