@@ -72,7 +72,6 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
   }
 
   virtual bool preSelect( int ientry ) {
-//    T::currentTree()->GetEntry( ientry );
     return true;
   }
 
