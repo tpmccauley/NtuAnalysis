@@ -63,11 +63,11 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
     else return false;
   }
 
-  virtual void getEntry( TBranch* branch, int ientry ) {
+  virtual void getEntry( TBranch** branch, int ientry ) {
     if ( currentEvBase != nullptr ) return;
     if ( currentEvent  != nullptr ) return;
-    branch->GetEntry( ientry );
-    T::process( branch, ientry );
+    (*branch)->GetEntry( ientry );
+    this->process( branch, ientry );
   }
 
   virtual bool preSelect( int ientry ) {
