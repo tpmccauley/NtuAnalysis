@@ -21,11 +21,6 @@ NtuAnalyzerUtil::~NtuAnalyzerUtil() {
 }
 
 
-void NtuAnalyzerUtil::beginJob() {
-  return;
-}
-
-
 void NtuAnalyzerUtil::getHeader( int ientry ) {
   if ( this->b_runNumber   != nullptr ) this->b_runNumber  ->GetEntry( ientry );
   if ( this->b_lumiSection != nullptr ) this->b_lumiSection->GetEntry( ientry );

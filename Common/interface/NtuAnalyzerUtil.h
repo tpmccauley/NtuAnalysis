@@ -31,8 +31,6 @@ class NtuAnalyzerUtil: public NtuEventSelect,
   const edm::EventBase   * currentEvBase;
   const edm::EventSetup  * currentEvSetup;
 
-  virtual void beginJob();
-
   virtual void getHeader( int ientry );
 
  protected:
