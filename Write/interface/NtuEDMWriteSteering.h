@@ -31,7 +31,7 @@ class NtuEDMWriteSteering: public EDMTreeWriter,
  public:
 
   explicit NtuEDMWriteSteering( const edm::ParameterSet& ps );
-  ~NtuEDMWriteSteering();
+  ~NtuEDMWriteSteering() override;
 
   void beginJob() override;
   void endJob() override;
