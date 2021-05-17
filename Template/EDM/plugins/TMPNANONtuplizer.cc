@@ -8,14 +8,11 @@ class TMPNANONtuplizer: public NtuNANOWriteSteering<TMPEDMToNtuple> {
 
  public:
 
-  explicit TMPNANONtuplizer( const edm::ParameterSet& ps );
+  explicit TMPNANONtuplizer( const edm::ParameterSet& ps ):
+    NtuNANOWriteSteering<TMPEDMToNtuple>( ps ) {
+  }
 
 };
-
-
-TMPNANONtuplizer::TMPNANONtuplizer( const edm::ParameterSet& ps ):
-  NtuNANOWriteSteering<TMPEDMToNtuple>( ps ) {
-}
 
 
 //define this as a plug-in

@@ -1,9 +1,5 @@
 #include "TMPAnalysis/EDM/interface/TMPEDMToNtuple.h"
-#include "TFile.h"
-#include "TROOT.h"
 
-#include "FWCore/Common/interface/TriggerNames.h"
-#include "DataFormats/Common/interface/TriggerResults.h"
 #include "DataFormats/PatCandidates/interface/Muon.h"
 #include "DataFormats/PatCandidates/interface/Jet.h"
 
@@ -26,13 +22,14 @@ void TMPEDMToNtuple::build( const edm::ParameterSet& ps ) {
   //       tracked or untracked respectively and use it to set variable X,
   //       otherwise use the default value D;
   //     - set a local user parameter () with the same label and value
-  // parameterSet->getParameter<T>( 
+  // the same can be achieved calling the function getParameter:
+  // getParameter<T>( "X", X, D,  true ); // for   tracked parameters
+  // getParameter<T>( "X", X, D, false ); // for untracked parameters
 
   GET_UNTRACKED( verbose, "false" );
 
   // get label of muons collection and
   // switch on muon blocklet if not null
-//  getParameter( "labelMuons", labelMuons, "" );
   GET_PARAMETER( labelMuons, "" );
   use_muons = ( labelMuons != "" );
   setUserParameter( "use_muons", use_muons ? "t" : "f" );
