@@ -1,6 +1,11 @@
 #ifndef TMPEDMToNtuple_h
 #define TMPEDMToNtuple_h
 
+// the following header files must appear in the following order, due to
+// cross-dependencies through preprocessor macro definition: an ugly 
+// situation, but didn't find any better solution to avoid both code 
+// duplication and excessive code fragmentation in a large number of 
+// source files
 #include "NtuAnalysis/Write/interface/NtuEDMAnalyzer.h"
 #include "NtuAnalysis/Write/interface/NtuEDConsumer.h"
 #include "TMPAnalysis/Ntu/bin/TMPAnalyzer.h"
@@ -23,7 +28,7 @@ class TMPEDMToNtuple: public TMPAnalyzer,
  public:
 
   template <class T>
-  TMPEDMToNtuple( const edm::ParameterSet& ps, NtuEDConsumer<T>* c  ):
+  TMPEDMToNtuple( const edm::ParameterSet& ps, NtuEDConsumer<T>* c ):
    NtuEDMAnalyzer( ps ) {
     // parse ParameterSet
     build( ps );
