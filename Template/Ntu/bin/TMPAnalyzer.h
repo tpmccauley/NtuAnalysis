@@ -21,15 +21,15 @@ class TMPAnalyzer: public virtual TMPAnalyzerUtil {
   // function to reset class content before reading from file
   virtual void reset();
   // function to do event-by-event analysis,
-  // return value "true" for accepted events
+  // return value "true" for accepted events, see .cc for more info
   virtual bool analyze( int entry, int event_file, int event_tot );
 
   // function called at the end of the analysis
   virtual void endJob();
 
   // functions called at the end of the event loop
-  virtual void plot();   // plot the histograms on the screen
-  virtual void save();   // save the histograms on a ROOT file
+//  virtual void plot(); // plot histograms on the screen (optional, see .cc)
+  virtual void save(); // save the histograms on a ROOT file
 
   bool verbose;
 

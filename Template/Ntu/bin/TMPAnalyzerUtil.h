@@ -16,7 +16,7 @@ class TMPAnalyzerUtil: public NtuInterface< TMPNtupleBranch<WrapperBase> > {
   void setupNtuple();
   virtual void beginJob();
 
-  // pre-selection, with minimal data process 
+  // optional: pre-selection, with minimal data process 
   // before full ntuple entry reading
   virtual bool preSelect( int ientry );
 
