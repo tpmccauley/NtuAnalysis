@@ -59,7 +59,7 @@ process.tmpAnalyzer = cms.EDAnalyzer('TMPNtuplizer',
 #    labelJets         = cms.string('selectedPatJetsLooseIDUserDataPFlow'),
 
     ## select events with at least a muon with pT > 10 GeV
-    ## (if missing a default ptCut=20GeV will be used, see XXXAnalyzer)
+    ## (if missing a default ptCut=20GeV will be used, see TMPAnalyzer)
     ptCut = cms.double( 10.0 )
 
 )

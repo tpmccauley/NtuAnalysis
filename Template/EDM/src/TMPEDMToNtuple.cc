@@ -156,7 +156,7 @@ void TMPEDMToNtuple::fillMuons() {
     for ( iObj = 0; iObj < nObj; ++iObj ) muonPtr[iObj] =
                                        &( muons->at( iObj ) );
 
-    CompareByPt<Muon> muoComp; // defined in XXXEDMToNtuple.h
+    CompareByPt<Muon> muoComp; // defined in TMPEDMToNtuple.h
     sort( muonPtr.begin(), muonPtr.end(), muoComp );
 
     nMuons = nObj;
