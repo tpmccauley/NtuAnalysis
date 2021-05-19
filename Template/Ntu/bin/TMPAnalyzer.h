@@ -28,7 +28,9 @@ class TMPAnalyzer: public virtual TMPAnalyzerUtil {
   virtual void endJob();
 
   // functions called at the end of the event loop
+//  using TreeWrapper::plot;
 //  virtual void plot(); // plot histograms on the screen (optional, see .cc)
+  using TreeWrapper::save;
   virtual void save(); // save the histograms on a ROOT file
 
   bool verbose;
