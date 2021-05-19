@@ -41,7 +41,7 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
  protected:
 #endif
 
-  void beginJob() {
+  void beginJob() override {
     std::string evl = this->getUserParameter( "eventList" );
     bool flag = read( evl );
     skipList = ( flag && ( this->getUserParameter( "listType" ) == "skip" ) );
