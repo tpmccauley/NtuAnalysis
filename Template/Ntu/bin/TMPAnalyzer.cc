@@ -40,7 +40,7 @@ TMPAnalyzer::TMPAnalyzer() {
   //       TMPAnalyzerUtil .
 
   setUserParameter( "verbose", "f" );
-  setUserParameter( "ptCut", "40.0" );
+  setUserParameter( "ptCut", 20.0 );
 
 }
 

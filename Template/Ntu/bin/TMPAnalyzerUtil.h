@@ -9,7 +9,7 @@ class TMPAnalyzerUtil: public NtuInterface< TMPNtupleBranch<WrapperBase> > {
  public:
 
   TMPAnalyzerUtil();
-  virtual ~TMPAnalyzerUtil();
+  ~TMPAnalyzerUtil() override;
 
  protected:
 
