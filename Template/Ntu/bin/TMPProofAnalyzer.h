@@ -52,7 +52,6 @@ class TMPProofEDMReader: public TMPProofReaderInterface,
   };
 };
 
-
 class TMPProofNANOReader: public TMPProofReaderInterface,
                           public NANOTreeReader {
  protected:
@@ -61,6 +60,7 @@ class TMPProofNANOReader: public TMPProofReaderInterface,
     this->initRead( tree );
   };
 };
+
 
 class TMPProofAnalyzer: public TSelector,
                         public NtuPReader {
