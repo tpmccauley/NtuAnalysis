@@ -24,6 +24,7 @@ class ProofLightReaderInterface: public TMPAnalyzer {
   bool gE( int ientry ) {
     return this->getEntry( ientry );
   };
+  using NtuLightReader::process;
   void process( int ientry ) {
     return;
   };
@@ -38,7 +39,7 @@ class TMPProofLightAnalyzer: public TSelector,
 
  public:
 
-  TMPProofLightAnalyzer( TTree* tree = 0 );
+  TMPProofLightAnalyzer( TTree* tree = nullptr );
   virtual ~TMPProofLightAnalyzer();
   virtual Int_t   Version() const { return 2; }
   virtual void    Begin( TTree *tree );
