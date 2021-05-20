@@ -10,7 +10,7 @@ class TMPFilter: public NtuFilter<TMPEDMToNtuple> {
 
   explicit TMPFilter( const edm::ParameterSet& ps ):
     NtuFilter<TMPEDMToNtuple>( ps ) {
-  };
+  }
 
 };
 

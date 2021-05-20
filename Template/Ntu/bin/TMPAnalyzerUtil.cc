@@ -45,11 +45,11 @@ void TMPAnalyzerUtil::beginJob() {
 }
 
 
-// optional: pre-selection, with minimal data process 
+// Optional: pre-selection, with minimal data process 
 // before full ntuple entry reading
 bool TMPAnalyzerUtil::preSelect( int ientry ) {
   // get number of muons
-  getEntry( b_nMuons, ientry );
+  getEntry( &b_nMuons, ientry );
   std::cout << nMuons  << " muons" << std::endl;
   // skip events with no muons
   if ( !nMuons ) return false;

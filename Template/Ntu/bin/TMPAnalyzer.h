@@ -9,29 +9,29 @@ class TMPAnalyzer: public virtual TMPAnalyzerUtil {
  public:
 
   TMPAnalyzer();
-  virtual ~TMPAnalyzer();
+  ~TMPAnalyzer() override;
 
   // function called before starting the analysis
-  virtual void beginJob();
+  void beginJob() override;
 
   // functions to book the histograms
-  void book();
+  void book() override;
 
   // functions called for each event
   // function to reset class content before reading from file
-  virtual void reset();
+  void reset() override;
   // function to do event-by-event analysis,
   // return value "true" for accepted events, see .cc for more info
-  virtual bool analyze( int entry, int event_file, int event_tot );
+  bool analyze( int entry, int event_file, int event_tot ) override;
 
   // function called at the end of the analysis
-  virtual void endJob();
+  void endJob() override;
 
   // functions called at the end of the event loop
-//  using TreeWrapper::plot;
-//  virtual void plot(); // plot histograms on the screen (optional, see .cc)
-  using TreeWrapper::save;
-  virtual void save(); // save the histograms on a ROOT file
+//  using WrapperBase::plot;
+//  void plot() override; // plot histograms on the screen (optional, see .cc)
+  using WrapperBase::save;
+  void save() override; // save the histograms on a ROOT file
 
   bool verbose;
 
@@ -46,8 +46,8 @@ class TMPAnalyzer: public virtual TMPAnalyzerUtil {
   TH1D* hptmu;
 
   // dummy copy constructor and assignment
-  TMPAnalyzer           ( const TMPAnalyzer& );
-  TMPAnalyzer& operator=( const TMPAnalyzer& );
+  TMPAnalyzer           ( const TMPAnalyzer& ) = delete;
+  TMPAnalyzer& operator=( const TMPAnalyzer& ) = delete;
 
 };
 

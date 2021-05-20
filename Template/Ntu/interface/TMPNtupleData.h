@@ -27,6 +27,7 @@ class TMPNtupleData: public NtuData<float> {
   // muons
   bool use_muons;
   unsigned int nMuons;
+  // spherical coordinates stored as std::vector
   std::vector<number>* muoPt;
   std::vector<number>* muoEta;
   std::vector<number>* muoPhi;

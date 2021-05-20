@@ -10,7 +10,7 @@ class TMPEDMNtuplizer: public NtuEDMWriteSteering<TMPEDMToNtuple> {
 
   explicit TMPEDMNtuplizer( const edm::ParameterSet& ps ):
     NtuEDMWriteSteering<TMPEDMToNtuple>( ps ) {
-  };
+  }
 
 };
 

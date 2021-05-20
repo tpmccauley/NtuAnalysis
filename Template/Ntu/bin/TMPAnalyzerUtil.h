@@ -14,17 +14,17 @@ class TMPAnalyzerUtil: public NtuInterface< TMPNtupleBranch<WrapperBase> > {
  protected:
 
   void setupNtuple();
-  virtual void beginJob();
+  void beginJob() override;
 
   // optional: pre-selection, with minimal data process 
   // before full ntuple entry reading
-  virtual bool preSelect( int ientry );
+  bool preSelect( int ientry ) override;
 
  private:
 
   // dummy copy constructor and assignment
-  TMPAnalyzerUtil           ( const TMPAnalyzerUtil& );
-  TMPAnalyzerUtil& operator=( const TMPAnalyzerUtil& );
+  TMPAnalyzerUtil           ( const TMPAnalyzerUtil& ) = delete;
+  TMPAnalyzerUtil& operator=( const TMPAnalyzerUtil& ) = delete;
 
 };
 
