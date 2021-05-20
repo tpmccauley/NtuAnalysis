@@ -98,13 +98,18 @@ class NtuLightReader {
     return this;
   }
 
+  virtual void beginJob() { return; }
+  virtual void book    () { return; }
+  virtual void reset   () { return; }
   virtual bool analyze( int entry, int event_file, int event_tot ) {
     return true;
   }
+  virtual void endJob  () { return; }
+  virtual void plot    () { return; }
+  virtual void save    () { return; }
 
   int analyzedEvents() { return analyzedEvts; }
   int acceptedEvents() { return acceptedEvts; }
-  virtual void plot() { return; }
 
   virtual void setConfiguration( const std::string& file ) {
     std::ifstream cfg( file.c_str() );
@@ -145,6 +150,15 @@ class NtuLightReader {
     else                userParameters.insert( make_pair( key, val ) );
     return;
   }
+  template <class T>
+  void setUserParameter( const std::string& key,
+                         const           T& val ) {
+    std::stringstream sstr;
+    sstr.str( "" );
+    sstr << val;
+    setUserParameter( key, sstr.str() );
+    return;
+  }
 
   const
   std::string& getUserParameter( const std::string& key ) {
@@ -158,18 +172,25 @@ class NtuLightReader {
 
 
   template <class T>
-  void getUserParameter( const std::string& key, T& val ) {
+  void         getUserParameter( const std::string& key, T& val ) {
     std::stringstream sstr;
     sstr.str( getUserParameter( key ) );
     sstr >> val;
     return;
   }
 
-  void getUserParameter( const std::string& key, bool& val ) {
+  void         getUserParameter( const std::string& key, bool& val ) {
     const char* flag = getUserParameter( key ).c_str();
     val = (   ( *flag == 't' ) || ( *flag == 'T' ) ||
             ( ( *flag >= '1' ) && ( *flag <= '9' ) ) );
     return;
+  }
+
+  template <class T>
+  T            getUserParameter( const std::string& key ) {
+    T val;
+    getUserParameter( key, val );
+    return val;
   }
 
  protected:
@@ -274,7 +295,7 @@ class NtuLightReader {
   int acceptedEvts;
 
   bool edmNtuple;
-  virtual void process( TBranch* b, int ientry ) {}
+  virtual void process( TBranch** b, int ientry ) {}
 
  private:
 
