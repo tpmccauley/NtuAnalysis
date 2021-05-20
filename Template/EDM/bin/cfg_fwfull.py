@@ -17,19 +17,28 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
 #fileList = cms.untracked.vstring( filename.readlines() )
 
 #process.source = cms.Source ("PoolSource", fileNames=fileList)
+
+### an empty source is used here for testing purposes
 process.source = cms.Source("EmptySource",
     numberEventsInRun   = cms.untracked.uint32(10)
 )
 
-### A filter is available to select events using a list having the format of
+### An EDFilter is available to select events using a list having the format of
 ### a text file with run and event number pairs: 
 ###     - only events listed in the file will be accepted, by default;
 ###     - when setting listType to "skip" all events will be accepted
 ###       but the listed ones, that will be skipped.
 #process.evNumFilter = cms.EDFilter('EvNumFilter',
-#    eventList = cms.string('evList')
+#    eventList = cms.string('evList'),
+#    listType = cms.string('keep')
+##    listType = cms.string('skip')
 #)
 
+### Analyze and write an user-defined flat ntuple.
+### This is an EDAnalyzer: events will be processed, written to the ntuple 
+### if selected (see TMPAnalyzer) and passed to the following module, if any;
+### to filter events according to the processing result replace TMPNtuplizer
+### with TMPFilter (see cfg_filter.py)
 process.tmpAnalyzer = cms.EDAnalyzer('TMPNtuplizer',
 
     ## mandatory
@@ -40,17 +49,18 @@ process.tmpAnalyzer = cms.EDAnalyzer('TMPNtuplizer',
     histName = cms.untracked.string('test_his.root'),
 
     ## optional
-### A list of events can be given, with the same format as in the filter
-### above; discarded events will be passed to following modules, if any,
-### but the ntuple structure will not be written to the ROOT file.
-### To use this module as a filter look at the "cfg_filter.py" script
+### Independently on the EDFilter above, a list of events can be given, with
+### the same format as in the filter above; discarded events will be passed
+### to following modules but no processing will be done, the ntuple structure
+### will not be filled and nothing will be written to the ROOT file.
 #    eventList = cms.string('evtlist'),
-#    listType = cms.string('skip'),
+#    listType = cms.string('keep'),
+##    listType = cms.string('skip'),
 
     verbose = cms.untracked.bool(True),
 
 ### if RANDOM muon will be generated with random momenta in place of reading 
-### from input (mandatory when reading from 
+### from input (mandatory when reading from an empty source)
 #    labelMuons        = cms.string('calibratedPatMuonsPFlow'),
     labelMuons        = cms.string('RANDOM'),
 
