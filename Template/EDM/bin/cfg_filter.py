@@ -44,7 +44,7 @@ process.tmpFilter = cms.EDFilter('TMPFilter',
     ## mandatory
     ## ntuple file name: giving an empty string the ntuple structure is 
     ## filled but it's not written to the ROOT file
-    ntuName = cms.untracked.string('test_ntu.root'),
+    ntuName = cms.untracked.string('test_ntf.root'),
     ## histogram file name
     histName = cms.untracked.string('test_his.root'),
 
