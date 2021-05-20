@@ -62,7 +62,7 @@ void TMPAnalyzer::beginJob() {
   //   i = getUserParameter<int>( "name" );
 
   getUserParameter( "verbose", verbose );
-  getUserParameter( "ptCut", ptCut );
+  getUserParameter( "ptCut"  , ptCut   );
 // alternatively:
 //  verbose = getUserParameter<bool> ( "verbose" );
 //  ptCut   = getUserParameter<float>( "ptCut"   );
