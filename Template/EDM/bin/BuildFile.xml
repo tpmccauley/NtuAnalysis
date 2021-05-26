@@ -8,6 +8,4 @@
 <use   name="FWCore/ParameterSet"/>
 <use   name="FWCore/PythonParameterSet"/>
 <use   name="root"/>
-<environment>
-  <bin   file="tmpFWLite.cc" name="tmpFWLite"></bin>
-</environment>
+<bin   file="tmpFWLite.cc" name="tmpFWLite"/>

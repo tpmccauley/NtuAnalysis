@@ -3,6 +3,4 @@
 <use   name="NtuTool/Read"/>
 <use   name="NtuTool/Common"/>
 <use   name="root"/>
-<environment>
-  <bin   file="treeAnalyze.cc" name="tmpTreeAnalyze"></bin>
-</environment>
+<bin   file="treeAnalyze.cc" name="tmpTreeAnalyze"/>
