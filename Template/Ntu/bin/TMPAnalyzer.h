@@ -28,7 +28,7 @@ class TMPAnalyzer: public virtual TMPAnalyzerUtil {
   void endJob() override;
 
   // functions called at the end of the event loop
-//  using WrapperBase::plot;
+  using WrapperBase::plot; // needed for the following declaration
 //  void plot() override; // plot histograms on the screen (optional, see .cc)
   using WrapperBase::save;
   void save() override; // save the histograms on a ROOT file

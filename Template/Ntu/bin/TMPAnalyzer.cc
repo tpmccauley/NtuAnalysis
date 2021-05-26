@@ -193,6 +193,8 @@ void TMPAnalyzer::save() {
 //   TMPAnalysis/Ntu/BuildFile.xml
 // with the instruction
 // <flags LDFLAGS="-lGpad"/>
+// or
+// <lib   name="Gpad"/>
 // DO NOT leave here an empty function, or a function without any ROOT object
 // drawing, otherwise the execution could get stuck in some situations.
 void TMPAnalyzer::plot() {
