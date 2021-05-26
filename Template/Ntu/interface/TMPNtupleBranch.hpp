@@ -49,7 +49,7 @@ void TMPNtupleBranch<T>::setBranches_muons() {
   //       as native arrays, and the value should be larger than the biggest
   //       array/vector actually stored in the ntuple, if missing it's set
   //       at 10000 by default; in this example the initial value
-  //       of nMuons is set at 20 in XXXNtupleData.cc, so it's used in
+  //       of nMuons is set at 20 in TMPNtupleData.cc, so it's used in
   //       place of hardcoding "20".
   // When writing/reading other ntuple formats different than NANOAOD,
   //    i.e. traditional flat ntuple or EDM ntuples, the calls to "setInfo"
