@@ -77,7 +77,7 @@ process.tmpAnalyzer = cms.EDProducer('TMPEDMNtuplizer',
 ### function.
 ### Unluckily this is implemented in a suboptimal way, using a "static bool"
 ### flag: it's incompatible with multithread running and doesn't comply 
-### with CMSSW rules. A better implementation will be implemented a.s.a.p.
+### with CMSSW rules. A better solution will be implemented a.s.a.p.
 process.tmpFilter = cms.EDFilter('EDMNtupleFilter')
 process.p = cms.Path(#process.evNumFilter *
                      process.tmpAnalyzer)
