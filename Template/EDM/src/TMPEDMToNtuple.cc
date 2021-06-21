@@ -17,14 +17,16 @@ void TMPEDMToNtuple::build( const edm::ParameterSet& ps ) {
   cout << "TMPEDMToNtuple::TMPEDMToNtuple" << endl;
 
   // GET_PARAMETER( X, D ) and GET_UNTRACKED( X, D )
-  // are equivalent to:
+  // are preprocessor macros, equivalent to:
   //     - look in the edm::ParameterSet for a parameter with label "X",
   //       tracked or untracked respectively and use it to set variable X,
   //       otherwise use the default value D;
-  //     - set a local user parameter () with the same label and value
-  // the same can be achieved calling the function getParameter:
+  //     - set a local user parameter with the same label and value.
+  // The same can be achieved calling the function getParameter:
   // getParameter<T>( "X", X, D,  true ); // for   tracked parameters
   // getParameter<T>( "X", X, D, false ); // for untracked parameters
+  // The reason for using macros is to avoid the repetition of X and
+  // let the preprocessor duplicate/stringify it.
 
   GET_UNTRACKED( verbose, "false" );
 
@@ -40,7 +42,11 @@ void TMPEDMToNtuple::build( const edm::ParameterSet& ps ) {
   use_jets = ( labelJets != "" );
   setUserParameter( "use_jets", use_jets ? "t" : "f" );
 
-  GET_PARAMETER( ptCut, "10.0" );
+  // get ptCut and set the corresponding user parameter,
+  // of course the default value given here is from the edm::ParameterSet
+  // point of view, it has no relation with the default values set in
+  // TMPAnalyzer and TMPAnalyzerUtil constructors
+  GET_PARAMETER( ptCut, "15.0" );
 
   setupNtuple();
 
