@@ -8,8 +8,6 @@ NtuWriteInterface<T>::NtuWriteInterface( const edm::ParameterSet& ps,
                                          NtuEDConsumer<C>* cb ):
   T( ps, cb ) {
 
-  std::cout << "NtuWriteInterface::NtuWriteInterface" << std::endl;
-
   ntuName = ps.getUntrackedParameter<std::string>( "ntuName" );
   dumpNtuple = ( ntuName != "" );
 
@@ -23,8 +21,6 @@ NtuWriteInterface<T>::~NtuWriteInterface() {
 
 template <class T>
 void NtuWriteInterface<T>::beginJob() {
-
-  std::cout << "NtuWriteInterface::beginJob()" << std::endl;
 
   T::beginJob();
   openNtuple( ntuName );
@@ -68,7 +64,6 @@ void NtuWriteInterface<T>::writeNtuple() {
 template <class T>
 void NtuWriteInterface<T>::closeNtuple() {
   if ( !dumpNtuple ) return;
-  std::cout  << "NtuWriteInterface::closeNtuple" << std::endl;
   close();
   file->Close();
   return;

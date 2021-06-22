@@ -11,7 +11,6 @@ class NtuNANOReader: public T, public NANOTreeReader {
  public:
 
   NtuNANOReader() {
-    std::cout << "NtuNANOReader" << std::endl;
   }
   ~NtuNANOReader() override {}
 
