@@ -142,6 +142,7 @@ create_nlow EDM/bin FWLite.cc
 create_same EDM/bin/cfg_fwlite.py
 create_same EDM/bin/cfg_fwfull.py
 create_same EDM/bin/cfg_fwfEDM.py
+create_same EDM/bin/cfg_fwNANO.py
 create_same EDM/bin/cfg_filter.py
 
 mkdir -p ${SUBSYSTEM}/EDM/plugins
