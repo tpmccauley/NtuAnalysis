@@ -30,7 +30,7 @@ class TMPEDMToNtuple: public TMPAnalyzer,
   template <class T>
   TMPEDMToNtuple( const edm::ParameterSet& ps, NtuEDConsumer<T>* c ):
    NtuEDMAnalyzer( ps ) {
-    // parse ParameterSet
+    // parse ParameterSet and bind ntuple branches to variables
     build( ps );
     // interface to allow uniform access to data in different CMSSW versions
     ObjectConsumer<T>& oc = getConsumer( c );

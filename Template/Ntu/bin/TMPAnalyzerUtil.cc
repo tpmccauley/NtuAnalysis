@@ -28,7 +28,7 @@ void TMPAnalyzerUtil::setupNtuple() {
 
   // The function "initTree()" is defined in TMPNtupleBranch ,
   // it uses the boolean flags to choose which TTree branches are
-  // actually written/read to/from the ntuple file
+  // actually written/read to/from the ntuple file.
   initTree();
 
   return;

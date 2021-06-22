@@ -48,6 +48,9 @@ void TMPEDMToNtuple::build( const edm::ParameterSet& ps ) {
   // TMPAnalyzer and TMPAnalyzerUtil constructors
   GET_PARAMETER( ptCut, "15.0" );
 
+  // The function "setupNtuple()" is defined in TMPAnalyzerUtil ,
+  // it retrieves the "use_..." boolean flags and choose which TTree branches
+  // are actually written to the ntuple file.
   setupNtuple();
 
 }

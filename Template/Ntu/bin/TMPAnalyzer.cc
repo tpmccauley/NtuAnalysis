@@ -36,7 +36,7 @@ TMPAnalyzer::TMPAnalyzer() {
   //     - default values can be set in the analyzer class constructor,
   //       values can be given as strings, also for numerical values;
   //     - default values can be set also in the TMPAnalyzerUtil constructor,
-  //       the ones in TMPAnalyzer constructor overwrite the ones in 
+  //       the ones in TMPAnalyzer constructor override the ones in 
   //       TMPAnalyzerUtil .
 
   setUserParameter( "verbose", "f" );
