@@ -47,10 +47,10 @@ process.tmpAnalyzer = cms.EDProducer('TMPEDMNtuplizer',
     histName = cms.untracked.string('test_his.root'),
 
     ## optional
-### A list of events can be given, with the same format as in the filter
-### above; discarded events will be passed to following modules but 
-### no processing will be done, the ntuple structure will not be filled 
-### and nothing will be added to the Event.
+### Independently on the EDFilter above, a list of events can be given, with
+### the same format as in the filter above; discarded events will be passed
+### to following modules but no processing will be done, the ntuple structure
+### will not be filled and nothing will be added to the Event.
 #    eventList = cms.string('evtlist'),
 #    listType = cms.string('keep'),
 ##    listType = cms.string('skip'),
@@ -67,7 +67,7 @@ process.tmpAnalyzer = cms.EDProducer('TMPEDMNtuplizer',
 #    labelJets         = cms.string('selectedPatJetsLooseIDUserDataPFlow'),
 
     ## select events with at least a muon with pT > 10 GeV
-    ## (if missing a default ptCut=20GeV will be used, see TMPAnalyzer)
+    ## (if missing a default ptCut=15GeV will be used, see TMPEDMToNtuple.cc)
     ptCut = cms.double( 10.0 )
 
 )
@@ -79,9 +79,11 @@ process.tmpAnalyzer = cms.EDProducer('TMPEDMNtuplizer',
 ### flag: it's incompatible with multithread running and doesn't comply 
 ### with CMSSW rules. A better solution will be implemented a.s.a.p.
 process.tmpFilter = cms.EDFilter('EDMNtupleFilter')
-process.p = cms.Path(#process.evNumFilter *
-                     process.tmpAnalyzer)
-#                     process.tmpAnalyzer * process.tmpFilter)
+process.p = cms.Path(
+#                     process.evNumFilter *
+                     process.tmpAnalyzer
+#                   * process.tmpFilter
+)
 
 # Output definition
 process.out = cms.OutputModule(

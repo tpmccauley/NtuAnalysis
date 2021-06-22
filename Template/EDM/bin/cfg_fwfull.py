@@ -59,7 +59,7 @@ process.tmpAnalyzer = cms.EDAnalyzer('TMPNtuplizer',
 
     verbose = cms.untracked.bool(True),
 
-### if RANDOM muon will be generated with random momenta in place of reading 
+### if RANDOM muons will be generated with random momenta in place of reading 
 ### from input (mandatory when reading from an empty source)
 #    labelMuons        = cms.string('calibratedPatMuonsPFlow'),
     labelMuons        = cms.string('RANDOM'),
@@ -69,11 +69,12 @@ process.tmpAnalyzer = cms.EDAnalyzer('TMPNtuplizer',
 #    labelJets         = cms.string('selectedPatJetsLooseIDUserDataPFlow'),
 
     ## select events with at least a muon with pT > 10 GeV
-    ## (if missing a default ptCut=20GeV will be used, see TMPAnalyzer)
+    ## (if missing a default ptCut=15GeV will be used, see TMPEDMToNtuple.cc)
     ptCut = cms.double( 10.0 )
 
 )
 
 
-process.p = cms.Path(#process.evNumFilter *
+process.p = cms.Path(
+#                     process.evNumFilter *
                      process.tmpAnalyzer)

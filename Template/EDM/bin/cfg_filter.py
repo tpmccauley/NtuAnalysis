@@ -59,7 +59,7 @@ process.tmpFilter = cms.EDFilter('TMPFilter',
 
     verbose = cms.untracked.bool(True),
 
-### if RANDOM muon will be generated with random momenta in place of reading 
+### if RANDOM muons will be generated with random momenta in place of reading 
 ### from input (mandatory when reading from an empty source)
 #    labelMuons        = cms.string('calibratedPatMuonsPFlow'),
     labelMuons        = cms.string('RANDOM'),
@@ -69,13 +69,14 @@ process.tmpFilter = cms.EDFilter('TMPFilter',
 #    labelJets         = cms.string('selectedPatJetsLooseIDUserDataPFlow'),
 
     ## select events with at least a muon with pT > 10 GeV
-    ## (if missing a default ptCut=20GeV will be used, see TMPAnalyzer)
+    ## (if missing a default ptCut=15GeV will be used, see TMPEDMToNtuple.cc)
     ptCut = cms.double( 10.0 )
 
 )
 
 
-process.p = cms.Path(#process.evNumFilter *
+process.p = cms.Path(
+#                     process.evNumFilter *
                      process.tmpFilter)
 
 ### including an output module the filter can be used to skim (MINI)AOD
