@@ -93,108 +93,108 @@ scram b
 
  -------------- Customize ntuple content, production & analysis --------------
 
-# The ntuple content is defined in the classes XYZNtupleData
-# and XYZNtupleBranch ; the first contains only the variables and the
-# second contains the TBranch pointers and the code to bind them to the
-# persistent ntuple. In principle all that could stay in just one class,
-# it's splitted to add a flexibility that could be useful in some situations.
+The ntuple content is defined in the classes XYZNtupleData
+and XYZNtupleBranch ; the first contains only the variables and the
+second contains the TBranch pointers and the code to bind them to the
+persistent ntuple. In principle all that could stay in just one class,
+it's splitted to add a flexibility that could be useful in some situations.
 
-# The example/skeleton deals with a ntuple having 2 blocks, each of them
-# has a boolean flag to allow switching it "on/off" to actually include
-# the corresponding data in the persistent ntuple, when writing the ntuple
-# itself, or actually read the corresponding branches when analyzing.
+The example/skeleton deals with a ntuple having 2 blocks, each of them
+has a boolean flag to allow switching it "on/off" to actually include
+the corresponding data in the persistent ntuple, when writing the ntuple
+itself, or actually read the corresponding branches when analyzing.
 
-# The user has to customize the following files, more detailed informations
-# and instructions are included through comments in each file:
+The user has to customize the following files, more detailed informations
+and instructions are included through comments in each file:
 
-# - XYZAnalysis/Ntu/interface/XYZNtupleData.h
-#   contains the ntuple data (or pointers) declarations
-# - XYZAnalysis/Ntu/src/XYZNtupleData.cc
-#   contains the code to allocate dynamic variables, vectors or arrays
-# - XYZAnalysis/Ntu/interface/XYZNtupleBranch.h
-#   contains the ntuple TBranch pointers declarations
-# - XYZAnalysis/Ntu/interface/XYZNtupleBranch.hpp
-#   contains the calls to "setBranch(...)"
+- XYZAnalysis/Ntu/interface/XYZNtupleData.h
+  contains the ntuple data (or pointers) declarations
+- XYZAnalysis/Ntu/src/XYZNtupleData.cc
+  contains the code to allocate dynamic variables, vectors or arrays
+- XYZAnalysis/Ntu/interface/XYZNtupleBranch.h
+  contains the ntuple TBranch pointers declarations
+- XYZAnalysis/Ntu/interface/XYZNtupleBranch.hpp
+  contains the calls to "setBranch(...)"
 
-# - XYZAnalysis/EDM/interface/PIPPOEDMToNtuple.h
-#   contains labels or input tokens, edm::Handles and so on,
-#   plus the "consume" instructions required by CMSSW and calls to other
-#   functions that, in their turn, call "setBranch(...)"; this code has to
-#   stay in the class interface (.h) because, to get the maximum flexibility,
-#   the constructor is templated.
-# - XYZAnalysis/EDM/src/PIPPOEDMToNtuple.cc
-#   parses the edm::ParameterSet, get data from (MINI)AOD and fill the
-#   ntuple structure
+- XYZAnalysis/EDM/interface/PIPPOEDMToNtuple.h
+  contains labels or input tokens, edm::Handles and so on,
+  plus the "consume" instructions required by CMSSW and calls to other
+  functions that, in their turn, call "setBranch(...)"; this code has to
+  stay in the class interface (.h) because, to get the maximum flexibility,
+  the constructor is templated.
+- XYZAnalysis/EDM/src/PIPPOEDMToNtuple.cc
+  parses the edm::ParameterSet, get data from (MINI)AOD and fill the
+  ntuple structure
 
-# - XYZAnalysis/Ntu/bin/XYZAnalyzer.h
-#   contains the histogram object pointers declarations as well as any other
-#   member variable the user may need, plus the declaration of the functions
-#   for the ntuple analysis steps (see NtuTool/INSTRUCTIONS)
-# - XYZAnalysis/Ntu/bin/XYZAnalyzer.cc
-#   contains the implementation of the ntuple analysis functions, i.e.
-#   preliminary operations, histogram creation, actual analysis for each
-#   ntuple entry, conclusive operations and saving.
-# - XYZAnalysis/Ntu/bin/XYZAnalyzerUtil.(h|cc)
-#   contains code that in principle could stay in XYZAnalyzer.(h|cc) but is
-#   encapsulated in a separate class to allow sharing it among different
-#   analyses related among them and sharing common operations, e.g. any
-#   code to navigate through cross referenced indices or compute quantities
-#   depending on others but not stored themselves in the ntuple.
+- XYZAnalysis/Ntu/bin/XYZAnalyzer.h
+  contains the histogram object pointers declarations as well as any other
+  member variable the user may need, plus the declaration of the functions
+  for the ntuple analysis steps (see NtuTool/INSTRUCTIONS)
+- XYZAnalysis/Ntu/bin/XYZAnalyzer.cc
+  contains the implementation of the ntuple analysis functions, i.e.
+  preliminary operations, histogram creation, actual analysis for each
+  ntuple entry, conclusive operations and saving.
+- XYZAnalysis/Ntu/bin/XYZAnalyzerUtil.(h|cc)
+  contains code that in principle could stay in XYZAnalyzer.(h|cc) but is
+  encapsulated in a separate class to allow sharing it among different
+  analyses related among them and sharing common operations, e.g. any
+  code to navigate through cross referenced indices or compute quantities
+  depending on others but not stored themselves in the ntuple.
 
-# In the template skeleton two operations are encapsulated in XYZAnalyzerUtil:
-# - the choice of the ntuple blocks to activate, so that some blocks can be
-#   skipped when ntuple is produced, reducing space usage, or analyzed,
-#   reducing reading time;
-# - a simple ntuple entry preselection (see above).
+In the template skeleton two operations are encapsulated in XYZAnalyzerUtil:
+- the choice of the ntuple blocks to activate, so that some blocks can be
+  skipped when ntuple is produced, reducing space usage, or analyzed,
+  reducing reading time;
+- a simple ntuple entry preselection (see above).
 
  -------------- Examples --------------
 
-# In the following some simple examples are shown, making use of the
-# template skeleton; ntuples are written and read back in 3 formats:
-# - "traditional" flat ntuples,
-# - EDM ntuples,
-# - NANOAOD .
-# In the examples two blocks are included, one for muons and one for jets;
-# the muons block can be filled with random numbers to allow running the
-# example without the need of any (MINI)AOD file.
-# In the examples the following options are also implemented:
-# - events pre-filter with a run-event list, i.e. only selected events
-#   are received by the CMSSW module filling the ntuple data;
-# - independently on that, a run-event list can be queried by the CMSSW module
-#   filling the ntuple data, to process only listed events (or skip them);
-# - ntuple entries can be made persistent, i.e. actually written to the
-#   output, on the basis of an analysis on-the-fly
-# - use the output of that analysis on-the-fly to filter events before
-#   passing them to the following CMSSW module, if any.
+In the following some simple examples are shown, making use of the
+template skeleton; ntuples are written and read back in 3 formats:
+- "traditional" flat ntuples,
+- EDM ntuples,
+- NANOAOD .
+In the examples two blocks are included, one for muons and one for jets;
+the muons block can be filled with random numbers to allow running the
+example without the need of any (MINI)AOD file.
+In the examples the following options are also implemented:
+- events pre-filter with a run-event list, i.e. only selected events
+  are received by the CMSSW module filling the ntuple data;
+- independently on that, a run-event list can be queried by the CMSSW module
+  filling the ntuple data, to process only listed events (or skip them);
+- ntuple entries can be made persistent, i.e. actually written to the
+  output, on the basis of an analysis on-the-fly
+- use the output of that analysis on-the-fly to filter events before
+  passing them to the following CMSSW module, if any.
 
-# Due to intrinsic difference in the way EDM ntuples and NANOAOD are produced,
-# there's some small difference in the way events are selected, processed and 
-# filtered:
+Due to intrinsic difference in the way EDM ntuples and NANOAOD are produced,
+there's some small difference in the way events are selected, processed and 
+filtered:
 
-# - "traditional" flat ntuple production in an edm::EDAnalyzer or edm::EDFilter:
-#   - pre-filter by run-event list                               = YES
-#   - process or skip in the EDAnalyzer by run-event list        = YES
-#   - ntuple entry writing based on analysis on-the-fly          = YES
-#   - filter events before passing them to the following module  = YES
-#   for skipped events no output is written, event filtering before the
-#   following module is obtained using "XYZFilter" in place of "XYZNtuplizer"
+- "traditional" flat ntuple production in an edm::EDAnalyzer or edm::EDFilter:
+  - pre-filter by run-event list                               = YES
+  - process or skip in the EDAnalyzer by run-event list        = YES
+  - ntuple entry writing based on analysis on-the-fly          = YES
+  - filter events before passing them to the following module  = YES
+  for skipped events no output is written, event filtering before the
+  following module is obtained using "XYZFilter" in place of "XYZNtuplizer"
 
-# - EDM ntuple production:
-#   - pre-filter by run-event list                               = YES
-#   - process or skip in the EDAnalyzer by run-event list        = YES
-#   - ntuple entry writing based on analysis on-the-fly          = YES
-#   - filter events before passing them to the following module  = YES
-#   for skipped events the event is written without the ntuple content,
-#   event filtering before the following module is obtained adding a dedicated
-#   filter in the "cms.Path"
+- EDM ntuple production:
+  - pre-filter by run-event list                               = YES
+  - process or skip in the EDAnalyzer by run-event list        = YES
+  - ntuple entry writing based on analysis on-the-fly          = YES
+  - filter events before passing them to the following module  = YES
+  for skipped events the event is written without the ntuple content,
+  event filtering before the following module is obtained adding a dedicated
+  filter in the "cms.Path"
 
-# - NANOAOD production:
-#   - pre-filter by run-event list                               = NO
-#   - process or skip in the EDAnalyzer by run-event list        = YES
-#   - ntuple entry writing based on analysis on-the-fly          = NO
-#   - filter events before passing them to the following module  = YES
-#   apparently NANOAOD production requires filling and writing all the events,
-#   so once the event has been processed the data structure is anyway written
+- NANOAOD production:
+  - pre-filter by run-event list                               = NO
+  - process or skip in the EDAnalyzer by run-event list        = YES
+  - ntuple entry writing based on analysis on-the-fly          = NO
+  - filter events before passing them to the following module  = YES
+  apparently NANOAOD production requires filling and writing all the events,
+  so once the event has been processed the data structure is anyway written
 
  ----- examples - part A -----
  -----  write a ntuple   -----
