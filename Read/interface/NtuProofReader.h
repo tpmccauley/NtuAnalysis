@@ -40,5 +40,5 @@ class NtuProofEDMReader: public NtuProofReaderInterface,
 };
 
 
-#endif
+#endif // NtuAnalysis_Read_NtuProofReader_h
 

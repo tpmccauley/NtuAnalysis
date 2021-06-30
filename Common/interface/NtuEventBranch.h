@@ -35,5 +35,5 @@ template <class T>
 NtuEventBranch<T>::~NtuEventBranch() {
 }
 
-#endif
+#endif // NtuAnalysis_Common_NtuEventBranch_h
 

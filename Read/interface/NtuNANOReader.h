@@ -32,4 +32,4 @@ class NtuNANOReader: public T, public NANOTreeReader {
 
 };
 
-#endif
+#endif // NtuAnalysis_Read_NtuNANOReader_h

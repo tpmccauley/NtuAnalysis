@@ -97,5 +97,5 @@ class NtuInterface: public virtual NtuAnalyzerUtil,
 };
 
 
-#endif
+#endif // NtuAnalysis_Common_NtuInterface_h
 

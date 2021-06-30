@@ -52,4 +52,4 @@ class NtuWriteSteering: public NtuEDConsumer<EDAnalyzerWrapper>,
 
 #include "NtuAnalysis/Write/interface/NtuWriteSteering.hpp"
 
-#endif
+#endif // NtuAnalysis_Write_NtuWriteSteering_h

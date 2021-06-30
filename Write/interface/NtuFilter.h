@@ -52,4 +52,4 @@ class NtuFilter: public NtuEDConsumer<EDFilterWrapper>,
 
 #include "NtuAnalysis/Write/interface/NtuFilter.hpp"
 
-#endif
+#endif // NtuAnalysis_Write_NtuFilter_h

@@ -35,4 +35,4 @@ class NtuEDMReader: public T, public EDMTreeReader {
 
 };
 
-#endif
+#endif // NtuAnalysis_Read_NtuEDMReader_h

@@ -52,5 +52,5 @@ class TMPAnalyzer: public virtual TMPAnalyzerUtil {
 };
 
 
-#endif
+#endif // TMPAnalysis_Ntu_TMPAnalyzer_h
 

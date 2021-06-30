@@ -45,5 +45,6 @@ class NtuParameterSetWrapper {
 
 //#include "PDAnalysis/EDM/interface/PDNtuParameterSetWrapper.hpp"
 
-#endif // PDNtuParameterSetWrapper_H
+#endif // NtuAnalysis_Write_NtuParameterSetWrapper_h
+
 

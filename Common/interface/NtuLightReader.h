@@ -308,5 +308,5 @@ class NtuLightReader {
 
 };
 
-#endif
+#endif // NtuAnalysis_Common_NtuLightReader_h
 

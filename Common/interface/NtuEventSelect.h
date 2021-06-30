@@ -39,5 +39,5 @@ class NtuEventSelect {
 };
 
 
-#endif
+#endif // NtuAnalysis_Common_NtuEventSelect_h
 

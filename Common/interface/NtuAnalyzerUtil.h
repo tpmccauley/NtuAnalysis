@@ -49,5 +49,5 @@ class NtuAnalyzerUtil: public NtuEventSelect,
 
 };
 
-#endif
+#endif // NtuAnalysis_Common_NtuAnalyzerUtil_h
 

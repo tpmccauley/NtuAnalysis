@@ -53,4 +53,4 @@ class NtuEDMWriteSteering: public EDMTreeWriter,
 
 #include "NtuAnalysis/Write/interface/NtuEDMWriteSteering.hpp"
 
-#endif
+#endif // NtuAnalysis_Write_NtuEDMWriteSteering_h

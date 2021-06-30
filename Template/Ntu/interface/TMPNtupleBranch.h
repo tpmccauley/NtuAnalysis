@@ -49,5 +49,5 @@ class TMPNtupleBranch: public virtual TMPNtupleData, public virtual T,
 
 #include "TMPNtupleBranch.hpp"
 
-#endif
+#endif // TMPAnalysis_Ntu_TMPNtupleBranch_h
 

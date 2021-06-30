@@ -58,5 +58,5 @@ class TMPProofLightAnalyzer: public TSelector,
 
 };
 
-#endif
+#endif // TMPAnalysis_Ntu_TMPProofAnalyzer_h
 

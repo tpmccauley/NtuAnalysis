@@ -105,4 +105,4 @@ class NtuEDMAnalyzer: public virtual NtuEventHeader,
 
 };
 
-#endif
+#endif // NtuAnalysis_Write_NtuEDMAnalyzer_h

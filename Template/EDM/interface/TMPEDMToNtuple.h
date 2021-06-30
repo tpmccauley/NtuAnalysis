@@ -73,4 +73,4 @@ class TMPEDMToNtuple: public TMPAnalyzer,
 
 };
 
-#endif
+#endif // TMPAnalysis_EDM_TMPEDMToNtuple_h

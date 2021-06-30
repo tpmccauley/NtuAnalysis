@@ -220,5 +220,5 @@ class ConstMap {
 
 #include "NtuAnalysis/Common/interface/NtuUtil.hpp"
 
-#endif
+#endif // NtuAnalysis_Common_NtuUtil_h
 

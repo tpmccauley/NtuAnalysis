@@ -51,5 +51,5 @@ class TMPNtupleData: public NtuData<float> {
 
 };
 
-#endif
+#endif // TMPAnalysis_Ntu_TMPNtupleData_h
 

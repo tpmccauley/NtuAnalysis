@@ -78,5 +78,6 @@ class NtuEDConsumer: public virtual T {
 
 };
 
-#endif // NtuEDConsumer_H
+#endif // NtuAnalysis_Write_NtuEDConsumer_h
+
 

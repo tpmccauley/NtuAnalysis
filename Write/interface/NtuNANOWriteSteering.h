@@ -53,4 +53,4 @@ class NtuNANOWriteSteering: public NANOTreeWriter,
 
 #include "NtuAnalysis/Write/interface/NtuNANOWriteSteering.hpp"
 
-#endif
+#endif // NtuAnalysis_Write_NtuNANOWriteSteering_h

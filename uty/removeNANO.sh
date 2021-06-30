@@ -11,5 +11,5 @@ cat << END_OF_INPUT > ${TOP}/Read/interface/NtuNANOReader.h
 template <class T>
 class NtuNANOReader: public T {
 };
-#endif
+#endif // NtuAnalysis_Read_NtuNANOReader_h
 END_OF_INPUT

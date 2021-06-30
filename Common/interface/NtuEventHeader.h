@@ -29,5 +29,5 @@ class NtuEventHeader {
 
 };
 
-#endif
+#endif // NtuAnalysis_Common_NtuEventHeader_h
 

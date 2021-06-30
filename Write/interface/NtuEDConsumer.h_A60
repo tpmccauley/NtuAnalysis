@@ -85,5 +85,6 @@ class NtuEDConsumer: public virtual T {
 
 //#include "NtuAnalysis/Write/interface/NtuEDConsumer.hpp"
 
-#endif // NtuEDConsumer_H
+#endif // NtuAnalysis_Write_NtuEDConsumer_h
+
 

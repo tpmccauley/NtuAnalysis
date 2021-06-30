@@ -29,4 +29,4 @@ class NtuReader: public T, public TreeReader {
 
 };
 
-#endif
+#endif // NtuAnalysis_Read_NtuReader_h

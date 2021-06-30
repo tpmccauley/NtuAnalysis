@@ -43,4 +43,4 @@ class NtuWriteInterface: public T,
 
 #include "NtuAnalysis/Write/interface/NtuWriteInterface.hpp"
 
-#endif
+#endif // NtuAnalysis_Write_NtuWriteInterface_h

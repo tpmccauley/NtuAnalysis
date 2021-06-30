@@ -52,5 +52,5 @@ class NtuData: public NtuUtil<T>,
 
 };
 
-#endif
+#endif // NtuAnalysis_Common_NtuData_h
 
