@@ -78,6 +78,10 @@ ${CMSSW_BASE}/src/NtuAnalysis/uty/setAtA60.sh # CMSSW_10_6_0 and following
 # their correctness cannot be guaranteed; e.g. a CMSSW_10_3_X could 
 # require the script "setAtA40.sh".
 
+# To run with CMSSW versions where NANOAOD is not defined, run the script
+
+${CMSSW_BASE}/src/NtuTool/uty/removeNANO.sh
+
 # Refer to NtuTool instructions to handle different CMSSW versions for that
 # package.
 
