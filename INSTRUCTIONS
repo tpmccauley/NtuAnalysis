@@ -67,6 +67,20 @@ git clone https://github.com/ronchese/NtuTool
 git clone https://github.com/ronchese/NtuAnalysis
 scram b
 
+# The package can be used across different CMSSW releases, running a script
+# before compilation:
+
+${CMSSW_BASE}/src/NtuAnalysis/uty/setAt764.sh #  CMSSW_7_6_4 and following
+${CMSSW_BASE}/src/NtuAnalysis/uty/setAtA40.sh # CMSSW_10_4_0 and following
+${CMSSW_BASE}/src/NtuAnalysis/uty/setAtA60.sh # CMSSW_10_6_0 and following
+
+# The CMSSW versions listed above correspond to the ones used for testing, 
+# their correctness cannot be guaranteed; e.g. a CMSSW_10_3_X could 
+# require the script "setAtA40.sh".
+
+# Refer to NtuTool instructions to handle different CMSSW versions for that
+# package.
+
  ----- STEP 2 : build an analysis skeleton -----
 
 # In the following, replace "xyz" with whatever you like, a subsystem
