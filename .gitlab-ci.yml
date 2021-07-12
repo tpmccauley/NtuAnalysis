@@ -1,0 +1,20 @@
+stages:
+  - build
+
+cmssw_compile_10_4_X:
+  stage: build
+  only:
+    - includeNANO_v002
+  tags:
+    - cvmfs
+  variables:
+    CMS_PATH: /cvmfs/cms.cern.ch
+    CMSSW_RELEASE: CMSSW_10_4_0
+  script:
+     - /bin/bash ./.gitlab/build_10_4_X.sh
+     - mkdir run
+  artifacts:
+    untracked: true
+    expire_in: 20 minutes
+    paths:
+      - ${CMSSW_RELEASE}
