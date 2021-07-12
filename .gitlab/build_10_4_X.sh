@@ -8,7 +8,5 @@ ls -ltr
 source ${BUILD_DIR}/uty/setAtA2E.sh
 cmsrel ${CMSSW_RELEASE}
 cd ${CMSSW_RELEASE}/src
-git clone https://github.com/tpmccauley/NtuTool.git
-source NtuTool/uty/setAtA2E.sh
-cmsenv
-scram b -v
+git clone https://github.com/tpmccauley/NtuTool.git NtuTool
+ls -ltr
