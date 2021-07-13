@@ -4,7 +4,7 @@ set -ex
 shopt -s expand_aliases
 export BUILD_DIR=${PWD}
 set +u && source ${CMS_PATH}/cmsset_default.sh; set -u
-source ${BUILD_DIR}/uty/setAtA40.sh
+source ${BUILD_DIR}/uty/setAtA60.sh
 cmsrel ${CMSSW_RELEASE}
 cd ${CMSSW_RELEASE}/src
 git clone https://github.com/tpmccauley/NtuTool.git NtuTool

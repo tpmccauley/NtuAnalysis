@@ -18,3 +18,21 @@ cmssw_compile_10_4_X:
     expire_in: 20 minutes
     paths:
       - ${CMSSW_RELEASE}
+
+cmssw_compile_10_6_X:
+  stage: build
+  only:
+    - includeNANO_v002
+  tags:
+    - cvmfs
+  variables:
+    CMS_PATH: /cvmfs/cms.cern.ch
+    CMSSW_RELEASE: CMSSW_10_6_0
+  script:
+     - /bin/bash ./.gitlab/build_10_6_X.sh
+     - mkdir run
+  artifacts:
+    untracked: true
+    expire_in: 20 minutes
+    paths:
+      - ${CMSSW_RELEASE}
