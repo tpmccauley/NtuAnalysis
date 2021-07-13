@@ -1,5 +1,6 @@
 stages:
   - build
+  - test
 
 cmssw_compile_10_4_X:
   stage: build
@@ -36,3 +37,40 @@ cmssw_compile_10_6_X:
     expire_in: 20 minutes
     paths:
       - ${CMSSW_RELEASE}
+
+run_tests:
+  stage: test
+  needs: [cmssw_compile_10_4_X]
+  only:
+    - includeNANO_v002
+  tags:
+    - cvmfs
+  image:
+    name: gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cc7-cms:latest
+    entrypoint: [""]
+  variables:
+    CMS_PATH: /cvmfs/cms.cern.ch
+    CMSSW_RELEASE: CMSSW_10_4_0
+  script:
+    - shopt -s expand_aliases
+    - set +u && source ${CMS_PATH}/cmsset_default.sh; set -u
+    - mkdir run
+    - cp -r ${CMSSW_RELEASE} run/
+    - chmod -R +w run/${CMSSW_RELEASE}/
+    - cd run/${CMSSW_RELEASE}/src
+    - cmsenv
+    - NtuAnalysis/uty/makeTemplate.sh xyz
+    - scram b
+    - rm test_his.root ; rm test_ntu.root ; cmsRun XYZAnalysis/EDM/bin/cfg_fwfull.py
+    - rm test_his.root ; rm test_ntf.root ; cmsRun XYZAnalysis/EDM/bin/cfg_filter.py
+    - rm test_his.root ; rm test_edm.root ; cmsRun XYZAnalysis/EDM/bin/cfg_fwfEDM.py
+    - rm test_his.root ; rm test_nnn.root ; cmsRun XYZAnalysis/EDM/bin/cfg_fwNANO.py
+    - echo "Y test_ntu.root" > test_ntu.list
+    - rm hist_ntu.root ; ${CMSSW_BASE}/bin/${SCRAM_ARCH}/xyzTreeAnalyze test_ntu.list hist_ntu.root -v use_muons t -v ntuType ntu -v verbose t
+    - echo "Y test_edm.root" > test_edm.list
+    - rm hist_edm.root ; ${CMSSW_BASE}/bin/${SCRAM_ARCH}/xyzTreeAnalyze test_edm.list hist_edm.root -v use_muons t -v ntuType edm -v verbose t
+    - echo "Y test_nnn.root" > test_nnn.list
+    - rm hist_nnn.root ; ${CMSSW_BASE}/bin/${SCRAM_ARCH}/xyzTreeAnalyze test_nnn.list hist_nnn.root -v use_muons t -v ntuType nano -v verbose t
+
+
+
