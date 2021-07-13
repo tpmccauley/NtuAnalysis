@@ -9,11 +9,11 @@ cmsrel ${CMSSW_RELEASE}
 cd ${CMSSW_RELEASE}/src
 git clone https://github.com/tpmccauley/NtuTool.git NtuTool
 mkdir -p NtuAnalysis
-mv ${BUILD_DIR}/Common
-mv ${BUILD_DIR}/Read
-mv ${BUILD_DIR}/Template
-mv ${BUILD_DIR}/Write
-mv ${BUILD_DIR}/uty
+mv ${BUILD_DIR}/Common NtuAnalysis
+mv ${BUILD_DIR}/Read NtuAnalysis
+mv ${BUILD_DIR}/Template NtuAnalysis
+mv ${BUILD_DIR}/Write NtuAnalysis
+mv ${BUILD_DIR}/uty NtuAnalysis
 ls -ltr
 cmsenv
 scram b -v
