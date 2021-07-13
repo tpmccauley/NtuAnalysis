@@ -7,7 +7,7 @@ set +u && source ${CMS_PATH}/cmsset_default.sh; set -u
 source ${BUILD_DIR}/uty/setAtA40.sh
 cmsrel ${CMSSW_RELEASE}
 cd ${CMSSW_RELEASE}/src
-git clone https://github.com/tpmccauley/NtuTool.git NtuTool
+git clone -b includeNANO_v002 https://github.com/tpmccauley/NtuTool.git NtuTool
 source NtuTool/uty/setAtA2E.sh
 mkdir -p NtuAnalysis
 mv ${BUILD_DIR}/Common NtuAnalysis
