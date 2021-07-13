@@ -1,7 +1,6 @@
 stages:
   - build
   - template
-  #- test
 
 cmssw_compile_10_4_X:
   stage: build
@@ -56,30 +55,13 @@ make_analysis_code:
     - shopt -s expand_aliases
     - set +u && source ${CMS_PATH}/cmsset_default.sh; set -u
     - mkdir run
+    - ls -ltr
     - uty/makeTemplate.sh xyz
     - cp -r ${CMSSW_RELEASE} run/
     - chmod -R +w run/${CMSSW_RELEASE}/
     - cd run/${CMSSW_RELEASE}/src
+    - ls -ltr
     - cmsenv
     - scram b
    
-run_tests:
-  stage: test
-  needs: [make_analysis_code]
-  only:
-    - includeNANO_v002
-  tags:
-    - cvmfs
-  image:
-    name: gitlab-registry.cern.ch/cms-cloud/cmssw-docker/cc7-cms:latest
-    entrypoint: [""]
-  variables:
-    CMS_PATH: /cvmfs/cms.cern.ch
-    CMSSW_RELEASE: CMSSW_10_4_0
-  script:
-    - rm test_his.root ; rm test_ntu.root ; cmsRun XYZAnalysis/EDM/bin/cfg_fwfull.py
-    - rm test_his.root ; rm test_ntf.root ; cmsRun XYZAnalysis/EDM/bin/cfg_filter.py
-    - rm test_his.root ; rm test_edm.root ; cmsRun XYZAnalysis/EDM/bin/cfg_fwfEDM.py
-    - rm test_his.root ; rm test_nnn.root ; cmsRun XYZAnalysis/EDM/bin/cfg_fwNANO.py
-
 
